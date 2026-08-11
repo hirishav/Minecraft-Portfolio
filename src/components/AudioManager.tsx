@@ -146,24 +146,7 @@ export default function AudioManager() {
       id="mute-btn"
       onClick={toggleMute}
       title={isMuted ? "Unmute Sounds" : "Mute Sounds"}
-      style={{
-        position: 'fixed',
-        bottom: '2rem',
-        right: '3rem',
-        zIndex: 100,
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#8b8b8b',
-        border: '2px solid #373737',
-        borderTopColor: '#ffffff',
-        borderLeftColor: '#ffffff',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        boxShadow: 'inset -2px -2px 0px rgba(0,0,0,0.2), inset 2px 2px 0px rgba(255,255,255,0.2), 0 4px 12px rgba(0,0,0,0.5)',
-        cursor: 'none',
-      }}
-      className="mc-button-action"
+      className="mc-button-action mute-btn-responsive"
     >
       {isMuted ? (
         <span style={{ fontSize: '24px', filter: 'grayscale(100%)', opacity: 0.5 }}>🔇</span>

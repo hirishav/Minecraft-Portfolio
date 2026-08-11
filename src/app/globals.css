@@ -375,3 +375,31 @@ button {
     margin-bottom: -83px;
   }
 }
+
+.mute-btn-responsive {
+  position: fixed;
+  bottom: 2rem;
+  right: 3rem;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  background-color: #8b8b8b;
+  border: 2px solid #373737;
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset -2px -2px 0px rgba(0,0,0,0.2), inset 2px 2px 0px rgba(255,255,255,0.2), 0 4px 12px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mute-btn-responsive {
+    bottom: unset;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}

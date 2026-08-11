@@ -1,0 +1,36 @@
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--surface);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+}
+
+.button:hover {
+  background-color: var(--surface-hover);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.6);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+}
+
+.primary {
+  background-color: var(--accent-dark-green);
+  border-color: var(--accent-green);
+  color: #fff;
+}
+
+.primary:hover {
+  background-color: var(--accent-green);
+  color: #fff;
+}

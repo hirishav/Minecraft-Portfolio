@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "pack_format": 34,
+    "supported_formats": {
+      "min_inclusive": 1,
+      "max_inclusive": 256
+    },
+    "description": "§3§lStreamer PvP Edit§f\n§0§kaa§6[Made By Rishav]§0§kaa"
+  }
+}

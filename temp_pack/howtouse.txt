@@ -1,0 +1,23 @@
+Custom Minecraft Resource Pack: Streamer PvP Edit
+
+WHAT THIS PACK DOES:
+This is a streamer-friendly PvP edit pack, blending the best elements of competitive packs with custom branding.
+Description from pack: Streamer PvP Edit
+[Made By Rishav]
+
+WHERE TO LOOK FOR CHANGES:
+- Open your inventory to see the custom branded GUI.
+- Look at the chat for cleaner fonts.
+- Use swords or flint & steel to notice the short swords and low-fire effects.
+
+SUPPORTED VERSION:
+This pack supports Minecraft version(s): 1.21 - 1.21.1 (Format: 34)
+
+HOW TO TEST IT:
+1. Copy the parent folder ("Streamer PvP Edit") or the ZIP file of this pack.
+2. Press Win + R, type %appdata%\.minecraft\resourcepacks, and hit Enter.
+3. Paste the folder/ZIP file into the resourcepacks directory.
+4. Launch Minecraft (ensure you are using a supported version mentioned above).
+5. Go to Options > Resource Packs.
+6. Find this pack in the list of available packs on the left side and click the arrow to move it to the "Selected" side.
+7. Click "Done" and enjoy!

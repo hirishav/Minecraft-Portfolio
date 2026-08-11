@@ -1,0 +1,179 @@
+"use client";
+import React, { useEffect, useRef, useState } from 'react';
+
+export default function AudioManager() {
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const startedRef = useRef(false);
+  
+  const [isMuted, setIsMuted] = useState(false);
+  const isMutedRef = useRef(false);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation(); // prevent triggering the global click
+    const newState = !isMuted;
+    setIsMuted(newState);
+    isMutedRef.current = newState;
+
+    if (newState) {
+      if (heartbeatIntervalRef.current) {
+        clearInterval(heartbeatIntervalRef.current);
+        heartbeatIntervalRef.current = null;
+      }
+    } else {
+      if (startedRef.current) {
+        playWardenHeartbeat();
+        heartbeatIntervalRef.current = setInterval(playWardenHeartbeat, 1500);
+      }
+    }
+  };
+
+  const playWardenHeartbeat = () => {
+    if (!audioCtxRef.current || isMutedRef.current) return;
+    const ctx = audioCtxRef.current;
+    
+    [0, 0.2].forEach(delay => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(50, ctx.currentTime + delay);
+      osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + delay + 0.2);
+      
+      gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+      gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + delay + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + delay + 0.3);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + 0.3);
+    });
+  };
+
+  const playFlash = () => {
+    if (!audioCtxRef.current || isMutedRef.current) return;
+    const ctx = audioCtxRef.current;
+    
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(1000, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1500, ctx.currentTime + 0.1);
+    
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+    
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.15);
+  };
+
+  const playEnderman = () => {
+    if (!audioCtxRef.current || isMutedRef.current) return;
+    const ctx = audioCtxRef.current;
+    
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(200, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.3);
+    
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+    
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.3);
+  };
+
+  useEffect(() => {
+    const initAudio = () => {
+      if (!audioCtxRef.current) {
+        audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      if (audioCtxRef.current.state === 'suspended') {
+        audioCtxRef.current.resume();
+      }
+    };
+
+    const handleGlobalClick = (e: MouseEvent) => {
+      initAudio();
+
+      if (!startedRef.current) {
+        startedRef.current = true;
+        if (!isMutedRef.current) {
+          playWardenHeartbeat();
+          heartbeatIntervalRef.current = setInterval(playWardenHeartbeat, 1500);
+        }
+      }
+
+      const target = e.target as HTMLElement;
+      
+      // Do not play click sounds if clicking the mute button itself
+      if (target.closest('#mute-btn')) return;
+
+      const isButton = target.closest('button') || target.closest('.mc-button-action') || target.closest('a');
+      
+      if (isButton) {
+        playEnderman();
+      } else {
+        playFlash();
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick);
+
+    return () => {
+      document.removeEventListener('click', handleGlobalClick);
+      if (heartbeatIntervalRef.current) {
+        clearInterval(heartbeatIntervalRef.current);
+      }
+      if (audioCtxRef.current) {
+        audioCtxRef.current.close();
+      }
+    };
+  }, []);
+
+  return (
+    <button
+      id="mute-btn"
+      onClick={toggleMute}
+      title={isMuted ? "Unmute Sounds" : "Mute Sounds"}
+      style={{
+        position: 'fixed',
+        bottom: '2rem',
+        right: '3rem',
+        zIndex: 100,
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#8b8b8b',
+        border: '2px solid #373737',
+        borderTopColor: '#ffffff',
+        borderLeftColor: '#ffffff',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow: 'inset -2px -2px 0px rgba(0,0,0,0.2), inset 2px 2px 0px rgba(255,255,255,0.2), 0 4px 12px rgba(0,0,0,0.5)',
+        cursor: 'none',
+      }}
+      className="mc-button-action"
+    >
+      {isMuted ? (
+        <span style={{ fontSize: '24px', filter: 'grayscale(100%)', opacity: 0.5 }}>🔇</span>
+      ) : (
+        <img 
+          src="/minecraft/item/music_disc_13.png" 
+          alt="Sound On" 
+          style={{ width: '32px', height: '32px', objectFit: 'contain' }} 
+        />
+      )}
+    </button>
+  );
+}

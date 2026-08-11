@@ -1,1 +1,377 @@
-@import "tailwindcss";
+:root {
+  --background: #111111;
+  --foreground: #ffffff;
+  --mc-yellow: #FFFF55;
+  --mc-green: #55FF55;
+  --mc-gold: #FFAA00;
+  --mc-red: #FF5555;
+  --mc-gray: #AAAAAA;
+  --surface: #1e1e1e;
+  --border: #444444;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-pixel: 'VT323', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: none !important;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-pixel); /* Mostly pixel font everywhere */
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--mc-yellow);
+}
+
+button {
+  font-family: var(--font-pixel);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mc-yellow);
+}
+
+/* Grid Background */
+.grid-bg {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--background);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.mc-shadow {
+  text-shadow: 4px 4px 0px rgba(0,0,0,0.8);
+}
+
+.mc-button-action {
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s, box-shadow 0.2s;
+}
+
+.mc-button-action:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+  animation: pulse-light 1.5s infinite;
+}
+
+@keyframes pulse-light {
+  0% { filter: brightness(1.1); }
+  50% { filter: brightness(1.3); }
+  100% { filter: brightness(1.1); }
+}
+
+/* Animated Steve CSS */
+.steve {
+  position: absolute;
+  bottom: 40px;
+  width: 40px;
+  height: 80px;
+  z-index: 10;
+  animation: steve-routine 8s infinite linear;
+}
+
+.s-head, .s-body, .s-arm, .s-leg {
+  background-image: url('/minecraft/steve.png');
+  background-size: 192px 192px; /* 64x64 scaled by 3 */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.s-head {
+  width: 24px; height: 24px;
+  position: absolute; top: 4px; left: 8px;
+  background-position: -24px -24px; /* x=8, y=8 (Front face) */
+}
+.s-body {
+  width: 12px; height: 36px;
+  position: absolute; top: 28px; left: 14px;
+  background-position: -48px -60px; /* x=16, y=20 */
+}
+.s-arm {
+  width: 12px; height: 36px;
+  position: absolute; top: 28px;
+  transform-origin: top center;
+}
+.s-arm-l { left: 14px; background-position: -120px -60px; animation: walk-leg-l 8s infinite linear; filter: brightness(0.7); }
+.s-arm-r { 
+  left: 14px; 
+  background-position: -120px -60px; /* x=40, y=20 */
+  animation: walk-leg-r 8s infinite linear, mine-arm-r 8s infinite linear; 
+}
+.s-axe {
+  width: 24px; height: 24px;
+  background-image: url('/minecraft/item/netherite_axe.png');
+  background-size: cover;
+  position: absolute;
+  bottom: -12px; left: -12px;
+  transform: rotate(135deg);
+  image-rendering: pixelated;
+  opacity: 0;
+  animation: show-pickaxe 8s infinite linear;
+}
+
+.s-leg {
+  width: 12px; height: 36px;
+  position: absolute; top: 64px;
+  transform-origin: top center;
+}
+.s-leg-l { left: 14px; background-position: 0px -60px; animation: walk-leg-r 8s infinite linear; filter: brightness(0.7); }
+.s-leg-r { left: 14px; background-position: 0px -60px; /* x=0, y=20 */ animation: walk-leg-l 8s infinite linear; }
+
+@keyframes steve-routine {
+  0%   { left: calc(2% + 120px); transform: scaleX(1); } 
+  30%  { left: calc(98% - 160px); transform: scaleX(1); } 
+  50%  { left: calc(98% - 160px); transform: scaleX(1); } 
+  55%  { left: calc(98% - 160px); transform: scaleX(-1); } 
+  80%  { left: calc(2% + 120px); transform: scaleX(-1); } 
+  85%  { left: calc(2% + 120px); transform: scaleX(1); }
+  100% { left: calc(2% + 120px); transform: scaleX(1); } 
+}
+
+@keyframes walk-leg-l {
+  0% { transform: rotate(0deg); }
+  5% { transform: rotate(20deg); }
+  10% { transform: rotate(-20deg); }
+  15% { transform: rotate(20deg); }
+  20% { transform: rotate(-20deg); }
+  25% { transform: rotate(20deg); }
+  30%, 50% { transform: rotate(0deg); }
+  55% { transform: rotate(20deg); }
+  60% { transform: rotate(-20deg); }
+  65% { transform: rotate(20deg); }
+  70% { transform: rotate(-20deg); }
+  75% { transform: rotate(20deg); }
+  80%, 100% { transform: rotate(0deg); }
+}
+@keyframes walk-leg-r {
+  0% { transform: rotate(0deg); }
+  5% { transform: rotate(-20deg); }
+  10% { transform: rotate(20deg); }
+  15% { transform: rotate(-20deg); }
+  20% { transform: rotate(20deg); }
+  25% { transform: rotate(-20deg); }
+  30%, 50% { transform: rotate(0deg); }
+  55% { transform: rotate(-20deg); }
+  60% { transform: rotate(20deg); }
+  65% { transform: rotate(-20deg); }
+  70% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+  80%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes mine-arm-r {
+  0%, 30% { transform: rotate(0deg); }
+  32% { transform: rotate(-80deg); }
+  34% { transform: rotate(0deg); }
+  36% { transform: rotate(-80deg); }
+  38% { transform: rotate(0deg); }
+  40% { transform: rotate(-80deg); }
+  42% { transform: rotate(0deg); }
+  44% { transform: rotate(-80deg); }
+  46% { transform: rotate(0deg); }
+  50%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes show-pickaxe {
+  0%, 29% { opacity: 0; }
+  30%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.broken-log {
+  animation: break-log 8s infinite linear;
+}
+.broken-leaves {
+  animation: break-leaves 8s infinite linear;
+}
+
+@keyframes break-log {
+  0%, 45% { opacity: 1; transform: scale(1); }
+  46%, 70% { opacity: 0; transform: scale(0.5); }
+  71%, 100% { opacity: 1; transform: scale(1); }
+}
+@keyframes break-leaves {
+  0%, 45% { opacity: 1; transform: translateY(0); }
+  46%, 70% { opacity: 0; transform: translateY(20px); }
+  71%, 100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================= */
+/* Responsive Classes */
+/* ========================================= */
+
+.responsive-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.responsive-grid-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+@media (min-width: 1024px) {
+  .responsive-grid-hero {
+    grid-template-columns: 1.2fr 0.8fr;
+    margin-top: 4rem;
+  }
+}
+
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .responsive-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.hero-title {
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--mc-yellow);
+  margin-bottom: 2rem;
+  letter-spacing: -1px;
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 7rem;
+    line-height: 0.9;
+    letter-spacing: -2px;
+  }
+}
+
+/* HotbarNav positioning */
+.hotbar-nav {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 4px;
+  border: 2px solid #222;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  width: max-content;
+}
+@media (min-width: 1024px) {
+  .hotbar-nav {
+    top: 2rem;
+    right: 3rem;
+    bottom: auto;
+    left: auto;
+    transform: none;
+  }
+}
+
+/* Utilities */
+.hide-on-mobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+}
+.hide-on-desktop {
+  display: block;
+}
+@media (min-width: 768px) {
+  .hide-on-desktop {
+    display: none;
+  }
+}
+
+/* Inventory scaling */
+.inventory-scale {
+  width: 352px;
+  height: 332px;
+  flex-shrink: 0;
+  transform-origin: top center;
+}
+@media (max-width: 400px) {
+  .inventory-scale {
+    transform: scale(0.85);
+    margin-bottom: -50px;
+  }
+}
+@media (max-width: 360px) {
+  .inventory-scale {
+    transform: scale(0.75);
+    margin-bottom: -83px;
+  }
+}

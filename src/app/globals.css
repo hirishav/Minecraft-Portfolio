@@ -403,3 +403,14 @@ button {
     height: 40px;
   }
 }
+@keyframes pulse-electric {
+  0% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5), 0 0 5px #ffcc00, 0 0 10px #ffcc00; }
+  50% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5), 0 0 15px #ffcc00, 0 0 30px #ffcc00; }
+  100% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5), 0 0 5px #ffcc00, 0 0 10px #ffcc00; }
+}
+
+@keyframes pulse-crimson {
+  0% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5), 0 0 5px #ff3333, 0 0 10px #ff3333; }
+  50% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5), 0 0 20px #ff3333, 0 0 40px #ff3333; }
+  100% { text-shadow: 2px 2px 0px rgba(0,0,0,0.5), 0 0 5px #ff3333, 0 0 10px #ff3333; }
+}

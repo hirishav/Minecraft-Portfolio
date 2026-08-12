@@ -9,7 +9,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Link href={`/work/${project.id}`} className={styles.card}>
+    <Link href={`/work/${project.id}`} className={styles.card} data-id={project.id}>
       <div className={styles.imageWrapper}>
         <img src={project.image} alt={project.name} className={styles.image} />
       </div>
@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <p className={styles.description}>{project.shortDescription}</p>
         <div className={styles.footer}>
           <span className={styles.version}>{project.minecraftVersion}</span>
-          <span style={{ color: 'var(--accent-green)', textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 'bold' }}>
+          <span className={styles.viewDetails}>
             View Details ➔
           </span>
         </div>

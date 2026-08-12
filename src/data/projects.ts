@@ -61,13 +61,13 @@ HOW TO TEST IT:
     name: "Streamer PvP Edit",
     category: "Resource Pack",
     shortDescription: "A bespoke mashup and edit pack for content creation.",
-    description: "I created a custom edited pack blending the best elements of various PvP packs while adding unique branding and stream-friendly modifications. It ensures consistent visibility during intense gaming sessions.",
+    description: "I created a custom edited pack blending the best elements of various PvP packs while adding unique electric branding and stream-friendly modifications. It ensures consistent visibility during intense gaming sessions with a high-voltage aesthetic.",
     image: "/images/projects/mrkipachu.png",
     features: [
-      "Stream-friendly contrast",
-      "Custom branded GUI and inventory",
-      "Clean chat fonts",
-      "Short swords and low-fire"
+      "Electric Yellow Streamer GUI",
+      "High-Visibility Thunderbolt Crosshairs",
+      "Dynamic FPS-Boosting Low Fire",
+      "Streamer-Branded Electric Tools"
     ],
     languages: ["JSON", "Properties"],
     minecraftVersion: "1.20+",
@@ -103,13 +103,13 @@ HOW TO TEST IT:
     name: "Rishav's 1M PvP Edit",
     category: "Resource Pack",
     shortDescription: "A highly optimized PvP texture pack designed for high framerates.",
-    description: "I built this custom PvP edit focusing on competitive gameplay. It features low-fire modifications, optimized FPS elements, and clean weapon models designed specifically for high-level competitive PvP. The pack includes custom crosshairs, highlighted ores for UHC, and custom skies.",
+    description: "I built this custom PvP edit focusing on competitive gameplay with a dark crimson theme. It features blood-soaked low-fire modifications, highly optimized FPS elements, and clean weapon models designed specifically for high-level competitive PvP. The pack includes dynamic crosshairs, highlighted ores for UHC, and custom skies.",
     image: "/images/projects/senpaispider.png",
     features: [
-      "Low-fire and short swords for PvP",
-      "Custom 1M special diamond tools",
-      "Highlight ores and clear glass",
-      "Optimized for 1.8.9 and 1.20+"
+      "Dynamic Crimson Crosshair",
+      "Blood-soaked Low-Fire Animation",
+      "Spider-sense Entity Highlights",
+      "1M Special Crimson UI"
     ],
     languages: ["JSON", "MCMETA"],
     minecraftVersion: "1.8.9 - 1.20.4",

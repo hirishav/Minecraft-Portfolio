@@ -9,7 +9,7 @@ import ContactSection from './contact/page';
 
 export default function Home() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8rem', scrollBehavior: 'smooth' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', scrollBehavior: 'smooth' }}>
       {/* Hero Section */}
       <section id="home">
         <div className="responsive-grid-hero">

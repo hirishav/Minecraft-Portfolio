@@ -46,9 +46,9 @@ export default function Skills() {
         <span style={{ color: '#FFAA00', marginLeft: '1rem' }}>Legendary</span>
       </p>
 
-      <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'flex-start' }}>
         {/* Inventory Background Container */}
-        <div style={{ width: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center', paddingBottom: '1rem' }}>
+        <div style={{ overflow: 'hidden', display: 'flex', justifyContent: 'center', paddingBottom: '1rem' }}>
           <div className="inventory-scale" style={{ 
             backgroundImage: 'url(/minecraft/gui/container/inventory.png)',
             backgroundSize: '512px 512px',
@@ -75,6 +75,7 @@ export default function Skills() {
                     style={{ width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: skill ? 'pointer' : 'default' }}
                     onMouseEnter={() => skill && setHovered(skill)}
                     onMouseLeave={() => setHovered(null)}
+                    onClick={() => skill && setHovered(skill)}
                   >
                     {skill && (
                       <img 

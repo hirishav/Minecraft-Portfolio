@@ -223,5 +223,27 @@ HOW TO TEST IT:
 6. Find this pack in the list of available packs on the left side and click the arrow to move it to the "Selected" side.
 7. Click "Done" and enjoy!
 `
+  },
+  {
+    id: "spacex",
+    name: "SpaceX",
+    category: "Other",
+    shortDescription: "A multipurpose discord bot.",
+    description: "SpaceX is a highly customizable, multipurpose Discord bot designed to manage and entertain your community.",
+    image: "/images/projects/scifi_plugin.png",
+    features: [
+      "Advanced Moderation",
+      "Custom Commands",
+      "Economy System",
+      "Music Features"
+    ],
+    languages: ["Python"],
+    minecraftVersion: "N/A",
+    status: "Completed",
+    demoUrl: "https://spacexbot.netlify.app",
+    howToUse: `SpaceX Discord Bot
+
+Everything is mentioned in the website.
+`
   }
 ];

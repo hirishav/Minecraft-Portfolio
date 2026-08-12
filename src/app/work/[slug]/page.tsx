@@ -83,8 +83,12 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
           </Button>
           {project.demoUrl && (
             <div style={{ marginTop: '1rem' }}>
-              <Button href={project.demoUrl} downloadName={`${project.name}.zip`} style={{ width: '100%', textAlign: 'center' }}>
-                Download Pack
+              <Button 
+                href={project.demoUrl} 
+                downloadName={project.demoUrl.startsWith('http') ? undefined : `${project.name}.zip`}
+                style={{ width: '100%', textAlign: 'center' }}
+              >
+                {project.demoUrl.startsWith('http') ? 'WEBSITE' : 'DOWNLOAD PACK'}
               </Button>
               <ReadMeModal content={project.howToUse} />
             </div>

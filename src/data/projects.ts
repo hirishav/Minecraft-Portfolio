@@ -230,7 +230,7 @@ HOW TO TEST IT:
     category: "Other",
     shortDescription: "A multipurpose discord bot.",
     description: "SpaceX is a highly customizable, multipurpose Discord bot designed to manage and entertain your community.",
-    image: "/images/projects/scifi_plugin.png",
+    image: "/images/projects/spacex.png",
     features: [
       "Advanced Moderation",
       "Custom Commands",

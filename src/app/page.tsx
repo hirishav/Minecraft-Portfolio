@@ -84,9 +84,9 @@ export default function Home() {
             {/* Stats */}
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               {[
-                { icon: 'nether_star.png', num: '5+', label: 'Projects' },
-                { icon: 'diamond_sword.png', num: '3+', label: 'Years' },
-                { icon: 'emerald.png', num: '15+', label: 'Verified Customers' }
+                { icon: 'nether_star.png', num: '50+', label: 'Projects' },
+                { icon: 'diamond_sword.png', num: '4+', label: 'Years' },
+                { icon: 'emerald.png', num: '200+', label: 'Customers' }
               ].map((stat, i) => (
                 <div key={i} style={{
                   minWidth: '100px',

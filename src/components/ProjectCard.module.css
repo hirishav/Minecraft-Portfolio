@@ -78,28 +78,4 @@
   font-weight: bold;
 }
 
-/* MrKipachu Edit - Electric Yellow */
-.card[data-id="mrkipachu-edit"]:hover {
-  border-color: #ffcc00;
-  box-shadow: 0 10px 20px rgba(255, 204, 0, 0.4);
-}
-.card[data-id="mrkipachu-edit"]:hover .category {
-  color: #ffcc00;
-}
-.card[data-id="mrkipachu-edit"]:hover .viewDetails {
-  color: #ffcc00;
-  text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
-}
 
-/* SenpaiSpider 1M - Crimson Red */
-.card[data-id="senpaispider-1m"]:hover {
-  border-color: #ff3333;
-  box-shadow: 0 10px 20px rgba(255, 51, 51, 0.4);
-}
-.card[data-id="senpaispider-1m"]:hover .category {
-  color: #ff3333;
-}
-.card[data-id="senpaispider-1m"]:hover .viewDetails {
-  color: #ff3333;
-  text-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
-}

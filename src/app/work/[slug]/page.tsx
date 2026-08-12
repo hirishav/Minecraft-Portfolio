@@ -23,25 +23,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
   let titleAnimation = "";
   let imageShadow = "";
   
-  if (project.id === "mrkipachu-edit") {
-    customStyle = {
-      '--accent-green': '#ffcc00',
-      '--mc-green': '#ffdd33',
-      '--mc-yellow': '#ffee66',
-      'backgroundImage': 'radial-gradient(circle at top, rgba(255,204,0,0.08) 0%, transparent 60%)',
-    } as React.CSSProperties;
-    titleAnimation = "pulse-electric 2s infinite";
-    imageShadow = "0 0 30px rgba(255, 204, 0, 0.3)";
-  } else if (project.id === "senpaispider-1m") {
-    customStyle = {
-      '--accent-green': '#ff3333',
-      '--mc-green': '#ff0000',
-      '--mc-yellow': '#ff6666',
-      'backgroundImage': 'radial-gradient(circle at top, rgba(255,0,0,0.08) 0%, transparent 60%)',
-    } as React.CSSProperties;
-    titleAnimation = "pulse-crimson 3s infinite";
-    imageShadow = "0 0 40px rgba(255, 51, 51, 0.4)";
-  }
+
 
   return (
     <div style={customStyle}>
@@ -70,7 +52,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
           aspectRatio: '16/9', 
           backgroundColor: 'var(--surface)', 
           border: '2px solid var(--border)', 
-          borderColor: project.id === "mrkipachu-edit" ? "#ffcc00" : (project.id === "senpaispider-1m" ? "#ff3333" : "var(--border)"),
+          borderColor: 'var(--border)',
           marginBottom: '3rem', 
           overflow: 'hidden',
           boxShadow: imageShadow || 'none'

@@ -133,7 +133,7 @@ export default function Home() {
                 </div>
                 <div>
                   <div style={{ color: 'var(--mc-green)', fontWeight: 'bold', marginBottom: '0.5rem' }}>&gt; AI / ML & Tools</div>
-                  <div style={{ color: 'var(--mc-gray)', fontSize: '1.1rem', lineHeight: '1.5' }}>LLMs, Machine Learning, AI Integration, Git, Docker, Linux</div>
+                  <div style={{ color: 'var(--mc-gray)', fontSize: '1.1rem', lineHeight: '1.5' }}>LLMs, Machine Learning, AI Integration, Git, Docker, Linux, Gradle</div>
                 </div>
               </div>
             </div>

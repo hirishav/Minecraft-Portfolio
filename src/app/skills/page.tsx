@@ -25,6 +25,7 @@ const SKILLS = [
   { id: 23, icon: 'magma_cream.png', name: 'NoSQL & Cache', rarity: 'Rare', type: 'Data', desc: 'MongoDB and Redis for fast, flexible data storage.' },
   { id: 24, icon: 'gold_ingot.png', name: 'Web Fundamentals', rarity: 'Common', type: 'Languages', desc: 'JavaScript, HTML, CSS for building intuitive frontends.' },
   { id: 25, icon: 'paper.png', name: 'Data Serialization', rarity: 'Common', type: 'Data', desc: 'JSON, YAML, XML for configuration and data exchange.' },
+  { id: 22, icon: 'book.png', name: 'Gradle & Maven', rarity: 'Rare', type: 'Tools', desc: 'Build automation tools for Java and Kotlin projects.' },
 ];
 
 export default function Skills() {

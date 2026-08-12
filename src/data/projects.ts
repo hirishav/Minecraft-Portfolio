@@ -162,5 +162,40 @@ HOW TO TEST IT:
 
 Everything is mentioned in the website.
 `
+  },
+  {
+    id: "questforge",
+    name: "QuestForge",
+    category: "Plugin",
+    shortDescription: "A dynamic, intelligent quest engine for Minecraft.",
+    description: "QuestForge is a production-quality Minecraft Paper plugin. It features a modular architecture, dynamic daily/weekly quests generated based on player progression, and async SQLite storage.",
+    image: "/images/projects/scifi_plugin.png",
+    features: [
+      "Dynamic Quest Generation",
+      "Asynchronous Database (SQLite)",
+      "Paginated GUI Menus",
+      "PlaceholderAPI Integration"
+    ],
+    languages: ["Java", "Gradle"],
+    minecraftVersion: "1.21.x",
+    status: "Completed",
+    demoUrl: "https://github.com/rishav/QuestForge",
+    howToUse: `QuestForge Plugin
+
+WHAT IT IS:
+A dynamic quest engine for Minecraft Paper 1.21.x.
+
+FEATURES:
+- Asynchronous DB operations (0 lag!)
+- Custom APIs for rewards and objectives
+- Beautiful GUI Menus
+
+HOW TO USE:
+1. Drop the built QuestForge-1.0.0.jar into your \`plugins\` folder.
+2. (Optional) Install PlaceholderAPI.
+3. Restart the server.
+4. Modify \`plugins/QuestForge/config.yml\` if needed.
+5. In game, run \`/quests\` to open the main menu!
+`
   }
 ];

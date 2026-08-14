@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const vt323 = VT323({ weight: "400", subsets: ["latin"], variable: "--font-pixel" });
 
 export const metadata: Metadata = {
-  title: "SpaceX Dev — Minecraft Developer",
+  title: "Rishav — Minecraft Developer",
   description: "Custom Minecraft plugins, resource packs, and server experiences. Bringing your server ideas to life.",
   icons: {
     icon: "/images/logo/logo.png",

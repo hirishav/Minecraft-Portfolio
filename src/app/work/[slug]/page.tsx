@@ -109,7 +109,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 downloadName={project.demoUrl.startsWith('http') ? undefined : `${project.name}.zip`}
                 style={{ width: '100%', textAlign: 'center' }}
               >
-                {project.demoUrl.startsWith('http') ? 'WEBSITE' : 'DOWNLOAD PACK'}
+                {project.demoUrl.includes('github.com') ? 'SOURCE CODE / DOWNLOAD' : project.demoUrl.startsWith('http') ? 'WEBSITE' : 'DOWNLOAD PACK'}
               </Button>
               <ReadMeModal content={project.howToUse} />
             </div>

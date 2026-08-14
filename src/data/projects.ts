@@ -157,24 +157,19 @@ HOW TO TEST IT:
     languages: ["Python"],
     minecraftVersion: "N/A",
     status: "Completed",
-    demoUrl: "https://spacexbot.netlify.app",
-    howToUse: `SpaceX Discord Bot
-
-Everything is mentioned in the website.
-`
-  },
   {
     id: "questforge",
     name: "QuestForge",
     category: "Plugin",
     shortDescription: "A dynamic, intelligent quest engine for Minecraft.",
-    description: "QuestForge is a production-quality Minecraft Paper plugin. It features a modular architecture, dynamic daily/weekly quests generated based on player progression, and async SQLite storage.",
+    description: "QuestForge is a production-quality Minecraft Paper plugin built to revolutionize player engagement. Instead of static missions, it features a highly modular architecture that dynamically generates daily and weekly quests tailored to individual player progression. With fully asynchronous SQLite and MySQL database support, beautiful paginated GUI menus, and robust PlaceholderAPI integration, it offers a seamless and lag-free experience for any server.",
     image: "/images/projects/plugin1.jpg",
     features: [
       "Dynamic Quest Generation",
-      "Asynchronous Database (SQLite)",
-      "Paginated GUI Menus",
-      "PlaceholderAPI Integration"
+      "Asynchronous Database (SQLite/MySQL)",
+      "Paginated & Animated GUI Menus",
+      "Developer API for Custom Objectives",
+      "PlaceholderAPI & Vault Integration"
     ],
     languages: ["Java", "Gradle"],
     minecraftVersion: "1.21.x",
@@ -183,19 +178,28 @@ Everything is mentioned in the website.
     howToUse: `QuestForge Plugin
 
 WHAT IT IS:
-A dynamic quest engine for Minecraft Paper 1.21.x.
+QuestForge is a production-quality, dynamic quest engine for Minecraft Paper 1.21.x. It automatically generates engaging daily and weekly quests based on player progression to keep your community active.
 
-FEATURES:
-- Asynchronous DB operations (0 lag!)
-- Custom APIs for rewards and objectives
-- Beautiful GUI Menus
+KEY FEATURES:
+- Zero-Lag Performance: Fully asynchronous database operations (SQLite & MySQL support).
+- Immersive GUIs: Beautiful, paginated, and animated inventory menus for tracking quests.
+- Highly Customizable: Easily modify quest templates, rewards, and requirements via configuration files.
+- Developer API: Allows custom objectives and rewards to be registered programmatically.
+- Integrations: Native support for PlaceholderAPI and Vault for economy rewards.
 
-HOW TO USE:
-1. Drop the built QuestForge-1.0.0.jar into your \`plugins\` folder.
-2. (Optional) Install PlaceholderAPI.
-3. Restart the server.
-4. Modify \`plugins/QuestForge/config.yml\` if needed.
-5. In game, run \`/quests\` to open the main menu!
+HOW TO INSTALL & USE:
+1. Download the latest \`QuestForge-1.0.0.jar\` from the GitHub Releases.
+2. Drop the jar file into your server's \`plugins\` folder.
+3. (Optional but recommended) Install \`PlaceholderAPI\` and \`Vault\` for extended functionality.
+4. Restart your server to generate the default configuration files.
+5. Customize your settings, quest templates, and rewards in \`plugins/QuestForge/config.yml\`.
+6. Run \`/quests reload\` to apply any configuration changes.
+7. In-game, players can use \`/quests\` to open the main menu and \`/quests active\` to view their current tasks!
+
+COMMANDS & PERMISSIONS:
+- \`/quests\` - Opens the main menu (Permission: \`questforge.use\`)
+- \`/quests active\` - Opens the active quests menu (Permission: \`questforge.use\`)
+- \`/quests reload\` - Reloads the plugin configurations (Permission: \`questforge.admin\`)
 `
   },
   {
@@ -203,13 +207,14 @@ HOW TO USE:
     name: "DungeonCore",
     category: "Plugin",
     shortDescription: "Procedurally generated instanced dungeons.",
-    description: "DungeonCore is a massive production-grade Minecraft Paper plugin featuring procedurally generated instanced dungeons, custom mobs, multi-phase bosses, parties, difficulties, and an asynchronous SQLite database.",
+    description: "DungeonCore is a massive, production-grade Minecraft Paper plugin that brings RPG-style instanced dungeons to your server. It features a robust procedural generation system that pieces together unique room templates, complete with custom mobs, complex multi-phase boss fights, an intuitive party system, and scalable difficulty levels—all backed by an asynchronous SQLite database for optimal performance.",
     image: "/images/projects/plugin2.jpg",
     features: [
       "Procedural Room Generation",
       "Dynamic Instancing System",
       "Multi-Phase Custom Bosses",
-      "Party & Difficulty System"
+      "Party & Difficulty System",
+      "Asynchronous Data Storage"
     ],
     languages: ["Java", "Gradle"],
     minecraftVersion: "1.21.x",
@@ -218,19 +223,27 @@ HOW TO USE:
     howToUse: `DungeonCore Plugin
 
 WHAT IT IS:
-A complete procedural instanced dungeon system for Minecraft Paper 1.21.x.
+DungeonCore is a massive procedural instanced dungeon system for Minecraft Paper 1.21.x. It provides an immersive RPG experience by generating unique, isolated dungeon layouts for parties to conquer.
 
-FEATURES:
-- Isolated dungeon instances
-- Custom mobs and multi-phase bosses
-- GUI-driven party and difficulty selection
-- Procedural room generation
+KEY FEATURES:
+- Dynamic Instancing: Completely isolated dungeon instances so multiple parties can run dungeons simultaneously without interference.
+- Procedural Generation: Dungeons are built dynamically by stitching together various room templates, ensuring no two runs are exactly the same.
+- Advanced Combat: Face off against custom mobs and engage in epic, multi-phase boss battles with unique mechanics and abilities.
+- Party & Difficulty System: Built-in GUI-driven party management and scalable difficulty levels that adjust loot drops and mob strength.
+- High Performance: Utilizes an asynchronous SQLite database to handle player data and instance tracking without lagging the main server thread.
 
-HOW TO USE:
-1. Compile via Gradle and drop the built DungeonCore.jar into your \`plugins\` folder.
-2. Ensure you have room templates in your structures folder.
-3. Restart the server.
-4. In game, run \`/dungeon\` to open the main menu to create parties and start dungeons!
+HOW TO INSTALL & USE:
+1. Compile the project via Gradle or download the built \`DungeonCore.jar\` from the GitHub Releases.
+2. Drop the jar into your server's \`plugins\` folder.
+3. Restart the server to generate the default folders and configuration files.
+4. Add your custom room templates to the \`plugins/DungeonCore/structures\` folder.
+5. Customize boss mechanics, mob stats, and loot tables in the respective YAML files.
+6. In-game, use the \`/dungeon\` command to open the main menu, create a party, select your difficulty, and dive into a dungeon!
+
+COMMANDS:
+- \`/dungeon\` - Opens the main Dungeon GUI.
+- \`/party create/invite/join\` - Manage your dungeon group.
+- \`/dungeon leave\` - Exit your current instance safely.
 `
   }
 ];

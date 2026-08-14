@@ -169,7 +169,7 @@ Everything is mentioned in the website.
     category: "Plugin",
     shortDescription: "A dynamic, intelligent quest engine for Minecraft.",
     description: "QuestForge is a production-quality Minecraft Paper plugin. It features a modular architecture, dynamic daily/weekly quests generated based on player progression, and async SQLite storage.",
-    image: "/images/projects/scifi_plugin.png",
+    image: "/images/projects/plugin1.jpg",
     features: [
       "Dynamic Quest Generation",
       "Asynchronous Database (SQLite)",
@@ -196,6 +196,41 @@ HOW TO USE:
 3. Restart the server.
 4. Modify \`plugins/QuestForge/config.yml\` if needed.
 5. In game, run \`/quests\` to open the main menu!
+`
+  },
+  {
+    id: "dungeoncore",
+    name: "DungeonCore",
+    category: "Plugin",
+    shortDescription: "Procedurally generated instanced dungeons.",
+    description: "DungeonCore is a massive production-grade Minecraft Paper plugin featuring procedurally generated instanced dungeons, custom mobs, multi-phase bosses, parties, difficulties, and an asynchronous SQLite database.",
+    image: "/images/projects/plugin2.jpg",
+    features: [
+      "Procedural Room Generation",
+      "Dynamic Instancing System",
+      "Multi-Phase Custom Bosses",
+      "Party & Difficulty System"
+    ],
+    languages: ["Java", "Gradle"],
+    minecraftVersion: "1.21.x",
+    status: "Completed",
+    demoUrl: "https://github.com/rishav/DungeonCore",
+    howToUse: `DungeonCore Plugin
+
+WHAT IT IS:
+A complete procedural instanced dungeon system for Minecraft Paper 1.21.x.
+
+FEATURES:
+- Isolated dungeon instances
+- Custom mobs and multi-phase bosses
+- GUI-driven party and difficulty selection
+- Procedural room generation
+
+HOW TO USE:
+1. Compile via Gradle and drop the built DungeonCore.jar into your \`plugins\` folder.
+2. Ensure you have room templates in your structures folder.
+3. Restart the server.
+4. In game, run \`/dungeon\` to open the main menu to create parties and start dungeons!
 `
   }
 ];

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const SKILLS = [
   // --- LEGENDARY (Row 1) ---
@@ -29,7 +30,7 @@ const SKILLS = [
 ];
 
 export default function Skills() {
-  const [hovered, setHovered] = useState<any>(null);
+  const [hovered, setHovered] = useState<typeof SKILLS[0] | null>(null);
 
   return (
     <div style={{ marginTop: '4rem' }}>
@@ -79,9 +80,11 @@ export default function Skills() {
                     onClick={() => skill && setHovered(skill)}
                   >
                     {skill && (
-                      <img 
+                      <Image 
                         src={`/minecraft/item/${skill.icon}`} 
-                        alt={skill.name} 
+                        alt={skill.name}
+                        width={32}
+                        height={32}
                         style={{ 
                           width: '32px', 
                           height: '32px',
@@ -107,9 +110,11 @@ export default function Skills() {
             boxShadow: 'inset 0 0 0 2px #100010, inset 0 0 0 4px #260058'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-              <img 
+              <Image 
                 src={`/minecraft/item/${hovered.icon}`} 
-                alt={hovered.name} 
+                alt={hovered.name}
+                width={32}
+                height={32}
                 style={{ 
                   width: '32px', 
                   height: '32px',

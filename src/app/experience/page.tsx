@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const QUESTS = [
   {
@@ -99,7 +100,7 @@ export default function Experience() {
                 backgroundColor: 'rgba(0,0,0,0.5)',
                 border: '2px solid #000'
               }}>
-                <img src={`/minecraft/item/${quest.icon}`} alt={quest.title} style={{ width: '48px', height: '48px' }} />
+                <Image src={`/minecraft/item/${quest.icon}`} alt={quest.title} width={48} height={48} style={{ width: '48px', height: '48px' }} />
               </div>
               
               <div style={{ flex: 1 }}>

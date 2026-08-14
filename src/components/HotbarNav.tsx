@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
@@ -74,9 +74,11 @@ export default function HotbarNav() {
             boxShadow: isActive ? '0 0 15px rgba(255, 255, 255, 0.9), inset -2px -2px 0px rgba(0,0,0,0.2), inset 2px 2px 0px rgba(255,255,255,0.2)' : 'inset -2px -2px 0px rgba(0,0,0,0.2), inset 2px 2px 0px rgba(255,255,255,0.2)',
             transition: 'all 0.1s'
           }}>
-            <img 
+            <Image 
               src={item.icon} 
               alt={item.name} 
+              width={32}
+              height={32}
               style={{ 
                 width: '32px', 
                 height: '32px', 

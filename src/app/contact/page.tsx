@@ -32,7 +32,7 @@ export default function Contact() {
             Have a detailed requirement? Open a ticket to get a formal quote.
           </p>
           <p style={{ color: '#d1d8d5', marginBottom: '2rem', fontSize: '0.9rem' }}>
-            "Discord pe requirement bhejo, baaki details hum discuss kar lenge."
+            &quot;Discord pe requirement bhejo, baaki details hum discuss kar lenge.&quot;
           </p>
           <Button href={siteConfig.ticketUrl} variant="primary">Open Ticket</Button>
         </div>

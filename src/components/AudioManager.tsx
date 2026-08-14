@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 export default function AudioManager() {
   const audioCtxRef = useRef<AudioContext | null>(null);
@@ -96,7 +97,7 @@ export default function AudioManager() {
   useEffect(() => {
     const initAudio = () => {
       if (!audioCtxRef.current) {
-        audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+        audioCtxRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
       }
       if (audioCtxRef.current.state === 'suspended') {
         audioCtxRef.current.resume();
@@ -151,9 +152,11 @@ export default function AudioManager() {
       {isMuted ? (
         <span style={{ fontSize: '24px', filter: 'grayscale(100%)', opacity: 0.5 }}>🔇</span>
       ) : (
-        <img 
+        <Image 
           src="/minecraft/item/music_disc_13.png" 
           alt="Sound On" 
+          width={32}
+          height={32}
           style={{ width: '32px', height: '32px', objectFit: 'contain' }} 
         />
       )}

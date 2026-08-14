@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteConfig } from '../data/config';
 import Button from './Button';
 import styles from './Navbar.module.css';
@@ -12,7 +13,7 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <Link href="/" className={styles.logo}>
-          <img src="/images/logo/logo.png" alt="Logo" />
+          <Image src="/images/logo/logo.png" alt="Logo" width={40} height={40} />
           {siteConfig.name}
         </Link>
 

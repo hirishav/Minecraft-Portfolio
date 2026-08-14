@@ -157,6 +157,12 @@ HOW TO TEST IT:
     languages: ["Python"],
     minecraftVersion: "N/A",
     status: "Completed",
+    demoUrl: "https://spacexbot.netlify.app",
+    howToUse: `SpaceX Discord Bot
+
+Everything is mentioned in the website.
+`
+  },
   {
     id: "questforge",
     name: "QuestForge",

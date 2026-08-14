@@ -19,9 +19,9 @@ export default function Button({ children, href, onClick, variant = 'secondary',
     // Treat external links differently
     if (href.startsWith('http') || href.endsWith('.zip') || href.startsWith('/downloads/')) {
       const isExternal = href.startsWith('http');
-      const downloadAttr = downloadName ? downloadName : (!isExternal ? true : undefined);
+      const downloadAttr = downloadName ? downloadName : (!isExternal ? "" : undefined);
       return (
-        <a href={href} target={isExternal ? "_blank" : undefined} download={downloadAttr as any} rel="noopener noreferrer" className={combinedClasses} style={style}>
+        <a href={href} target={isExternal ? "_blank" : undefined} download={downloadAttr} rel="noopener noreferrer" className={combinedClasses} style={style}>
           {children}
         </a>
       );

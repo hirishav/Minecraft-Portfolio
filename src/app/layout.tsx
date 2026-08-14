@@ -5,6 +5,11 @@ import Footer from "../components/Footer";
 import CustomCursor from "../components/CustomCursor";
 import LoadingScreen from "../components/LoadingScreen";
 import AudioManager from "../components/AudioManager";
+import Image from "next/image";
+import { Inter, VT323 } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const vt323 = VT323({ weight: "400", subsets: ["latin"], variable: "--font-pixel" });
 
 export const metadata: Metadata = {
   title: "SpaceX Dev — Minecraft Developer",
@@ -20,17 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${vt323.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=VT323&display=swap" rel="stylesheet" />
-        <style dangerouslySetInnerHTML={{ __html: `
-          :root {
-            --font-sans: 'Inter', sans-serif;
-            --font-pixel: 'VT323', monospace;
-          }
-        `}} />
       </head>
       <body className="grid-bg">
         <CustomCursor />
@@ -40,7 +36,7 @@ export default function RootLayout({
             {/* Top Left User Profile */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <div style={{ width: '48px', height: '48px', backgroundColor: '#333', border: '2px solid #555' }}>
-                <img src="/minecraft/block/grass_block_side.png" alt="Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Image src="/minecraft/block/grass_block_side.png" alt="Avatar" width={48} height={48} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div>
                 <div style={{ color: 'var(--mc-yellow)', fontSize: '1.2rem', fontWeight: 'bold' }}>RD</div>

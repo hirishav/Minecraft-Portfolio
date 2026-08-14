@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Project } from '../data/projects';
 import styles from './ProjectCard.module.css';
 
@@ -11,7 +12,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/work/${project.id}`} className={styles.card} data-id={project.id}>
       <div className={styles.imageWrapper}>
-        <img src={project.image} alt={project.name} className={styles.image} />
+        <Image src={project.image} alt={project.name} className={styles.image} fill={true} />
       </div>
       <div className={styles.content}>
         <div className={styles.category}>{project.category}</div>

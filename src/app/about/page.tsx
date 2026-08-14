@@ -14,10 +14,10 @@ export default function About() {
             I am a Minecraft developer, builder, and problem solver. I enjoy creating custom server experiences that go beyond vanilla limitations. 
           </p>
           <p style={{ fontSize: '1.2rem', color: '#d1d8d5', marginBottom: '2rem', maxWidth: '800px' }}>
-            Whether it's writing optimized Java plugins, designing immersive resource packs, or configuring complex server networks, I build solutions tailored to your community's needs. My goal is to make your server stand out with high-quality, professional assets.
+            Whether it&apos;s writing optimized Java plugins, designing immersive resource packs, or configuring complex server networks, I build solutions tailored to your community&apos;s needs. My goal is to make your server stand out with high-quality, professional assets.
           </p>
           
-          <Button href={siteConfig.discordInvite} variant="primary">Let's Talk</Button>
+          <Button href={siteConfig.discordInvite} variant="primary">Let&apos;s Talk</Button>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import AboutSection from './about/page';
 import SkillsSection from './skills/page';
 import ExperienceSection from './experience/page';
@@ -99,7 +100,7 @@ export default function Home() {
                   justifyContent: 'center',
                   gap: '0.5rem'
                 }}>
-                  <img src={`/minecraft/item/${stat.icon}`} alt={stat.label} style={{ width: '32px', height: '32px' }} />
+                  <Image src={`/minecraft/item/${stat.icon}`} alt={stat.label} width={32} height={32} style={{ width: '32px', height: '32px' }} />
                   <div style={{ textAlign: 'center' }}>
                     <div style={{ color: 'var(--mc-yellow)', fontWeight: 'bold' }}>{stat.num}</div>
                     <div style={{ color: '#888', fontSize: '0.9rem' }}>{stat.label}</div>
@@ -152,36 +153,36 @@ export default function Home() {
               {/* Ground */}
               <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '40px', display: 'flex' }}>
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <img key={`grass-${i}`} src="/minecraft/block/grass_block_side.png" style={{ width: '40px', height: '40px' }} alt="grass" />
+                  <Image key={`grass-${i}`} src="/minecraft/block/grass_block_side.png" width={40} height={40} style={{ width: '40px', height: '40px' }} alt="grass" />
                 ))}
               </div>
               <div style={{ position: 'absolute', bottom: '-40px', width: '100%', height: '40px', display: 'flex' }}>
                 {Array.from({ length: 15 }).map((_, i) => (
-                  <img key={`dirt-${i}`} src="/minecraft/block/dirt.png" style={{ width: '40px', height: '40px' }} alt="dirt" />
+                  <Image key={`dirt-${i}`} src="/minecraft/block/dirt.png" width={40} height={40} style={{ width: '40px', height: '40px' }} alt="dirt" />
                 ))}
               </div>
               {/* Cherry Blossom Tree (Left) */}
               <div style={{ position: 'absolute', bottom: '40px', left: '2%', width: '120px', height: '160px' }}>
-                <img src="/minecraft/block/cherry_log.png" style={{ position: 'absolute', bottom: '0', left: '40px', width: '40px', height: '40px' }} alt="log" />
-                <img src="/minecraft/block/cherry_log.png" style={{ position: 'absolute', bottom: '40px', left: '40px', width: '40px', height: '40px' }} alt="log" />
+                <Image src="/minecraft/block/cherry_log.png" width={40} height={40} style={{ position: 'absolute', bottom: '0', left: '40px', width: '40px', height: '40px' }} alt="log" />
+                <Image src="/minecraft/block/cherry_log.png" width={40} height={40} style={{ position: 'absolute', bottom: '40px', left: '40px', width: '40px', height: '40px' }} alt="log" />
                 
-                <img src="/minecraft/block/cherry_leaves.png" style={{ position: 'absolute', bottom: '80px', left: '0px', width: '40px', height: '40px' }} alt="leaves" />
-                <img src="/minecraft/block/cherry_leaves.png" style={{ position: 'absolute', bottom: '80px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
-                <img src="/minecraft/block/cherry_leaves.png" style={{ position: 'absolute', bottom: '80px', left: '80px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/cherry_leaves.png" width={40} height={40} style={{ position: 'absolute', bottom: '80px', left: '0px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/cherry_leaves.png" width={40} height={40} style={{ position: 'absolute', bottom: '80px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/cherry_leaves.png" width={40} height={40} style={{ position: 'absolute', bottom: '80px', left: '80px', width: '40px', height: '40px' }} alt="leaves" />
                 
-                <img src="/minecraft/block/cherry_leaves.png" style={{ position: 'absolute', bottom: '120px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/cherry_leaves.png" width={40} height={40} style={{ position: 'absolute', bottom: '120px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
               </div>
 
               {/* Oak Tree (Right) */}
               <div style={{ position: 'absolute', bottom: '40px', right: '2%', width: '120px', height: '160px' }}>
-                <img src="/minecraft/block/oak_log.png" className="broken-log" style={{ position: 'absolute', bottom: '0', left: '40px', width: '40px', height: '40px' }} alt="log" />
-                <img src="/minecraft/block/oak_log.png" style={{ position: 'absolute', bottom: '40px', left: '40px', width: '40px', height: '40px' }} alt="log" />
+                <Image src="/minecraft/block/oak_log.png" width={40} height={40} className="broken-log" style={{ position: 'absolute', bottom: '0', left: '40px', width: '40px', height: '40px' }} alt="log" />
+                <Image src="/minecraft/block/oak_log.png" width={40} height={40} style={{ position: 'absolute', bottom: '40px', left: '40px', width: '40px', height: '40px' }} alt="log" />
                 
-                <img src="/minecraft/block/oak_leaves.png" className="broken-leaves" style={{ position: 'absolute', bottom: '80px', left: '0px', width: '40px', height: '40px' }} alt="leaves" />
-                <img src="/minecraft/block/oak_leaves.png" className="broken-leaves" style={{ position: 'absolute', bottom: '80px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
-                <img src="/minecraft/block/oak_leaves.png" className="broken-leaves" style={{ position: 'absolute', bottom: '80px', left: '80px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/oak_leaves.png" width={40} height={40} className="broken-leaves" style={{ position: 'absolute', bottom: '80px', left: '0px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/oak_leaves.png" width={40} height={40} className="broken-leaves" style={{ position: 'absolute', bottom: '80px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/oak_leaves.png" width={40} height={40} className="broken-leaves" style={{ position: 'absolute', bottom: '80px', left: '80px', width: '40px', height: '40px' }} alt="leaves" />
                 
-                <img src="/minecraft/block/oak_leaves.png" className="broken-leaves" style={{ position: 'absolute', bottom: '120px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
+                <Image src="/minecraft/block/oak_leaves.png" width={40} height={40} className="broken-leaves" style={{ position: 'absolute', bottom: '120px', left: '40px', width: '40px', height: '40px' }} alt="leaves" />
               </div>
 
               {/* Animated Steve */}
@@ -208,8 +209,8 @@ export default function Home() {
                 aspectRatio: '1 / 1',
                 backgroundColor: '#333'
               }}>
-                <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-                  <img src="/images/profile.png" alt="Rishav Das" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+                  <Image src="/images/profile.png" alt="Rishav Das" fill={true} style={{ objectFit: 'cover', objectPosition: 'center' }} />
                 </div>
               <div style={{
                 position: 'absolute',

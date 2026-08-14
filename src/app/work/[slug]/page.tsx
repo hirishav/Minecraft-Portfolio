@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { projects } from '../../../data/projects';
 import Button from '../../../components/Button';
 import ReadMeModal from '../../../components/ReadMeModal';
+import Image from 'next/image';
 import { siteConfig } from '../../../data/config';
 
 export async function generateStaticParams() {
@@ -19,9 +20,9 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
     notFound();
   }
 
-  let customStyle = {} as React.CSSProperties;
-  let titleAnimation = "";
-  let imageShadow = "";
+  const customStyle = {} as React.CSSProperties;
+  const titleAnimation = "";
+  const imageShadow = "";
   
 
 
@@ -55,9 +56,10 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
           borderColor: 'var(--border)',
           marginBottom: '3rem', 
           overflow: 'hidden',
+          position: 'relative',
           boxShadow: imageShadow || 'none'
         }}>
-          <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <Image src={project.image} alt={project.name} fill={true} style={{ objectFit: 'cover' }} />
         </div>
 
       <div className="responsive-grid-2">
@@ -97,7 +99,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         <div style={{ backgroundColor: 'var(--surface)', padding: '2rem', border: '2px solid var(--border)', height: 'fit-content' }}>
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Want something similar?</h3>
           <p style={{ color: '#a0aab2', marginBottom: '2rem', fontSize: '0.9rem' }}>
-            Apni requirement batao — let's build something unique for your server.
+            Apni requirement batao &mdash; let&apos;s build something unique for your server.
           </p>
           <Button href={siteConfig.ticketUrl} variant="primary" className="w-full" style={{ width: '100%', textAlign: 'center' }}>
             Start a Project

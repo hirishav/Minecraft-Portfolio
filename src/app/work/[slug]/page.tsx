@@ -108,7 +108,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
             <div style={{ marginTop: '1rem' }}>
               <Button 
                 href={project.demoUrl} 
-                downloadName={project.demoUrl.startsWith('http') ? undefined : `${project.name}.zip`}
+                downloadName={project.demoUrl.startsWith('http') ? undefined : project.category === 'Plugin' ? `${project.name}.jar` : `${project.name}.zip`}
                 style={{ width: '100%', textAlign: 'center' }}
               >
                 {project.demoUrl.startsWith('http') && !project.demoUrl.includes('github.com') 

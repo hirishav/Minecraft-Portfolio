@@ -180,7 +180,7 @@ Everything is mentioned in the website.
     languages: ["Java", "Gradle"],
     minecraftVersion: "1.21.x",
     status: "Completed",
-    demoUrl: "/downloads/QuestForge.jar",
+    demoUrl: "https://github.com/rishav/QuestForge",
     howToUse: `Custom Minecraft Plugin: QuestForge
 
 WHAT THIS PLUGIN DOES:
@@ -244,7 +244,7 @@ COMMANDS & PERMISSIONS:
     languages: ["Java", "Gradle"],
     minecraftVersion: "1.21.x",
     status: "Completed",
-    demoUrl: "/downloads/DungeonCore.jar",
+    demoUrl: "https://github.com/rishav/DungeonCore",
     howToUse: `Custom Minecraft Plugin: DungeonCore
 
 WHAT THIS PLUGIN DOES:

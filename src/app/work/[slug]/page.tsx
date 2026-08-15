@@ -111,7 +111,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 downloadName={project.demoUrl.startsWith('http') ? undefined : `${project.name}.zip`}
                 style={{ width: '100%', textAlign: 'center' }}
               >
-                {project.demoUrl.includes('github.com') ? 'SOURCE CODE / DOWNLOAD' : project.demoUrl.startsWith('http') ? 'WEBSITE' : 'DOWNLOAD PACK'}
+                {project.demoUrl.startsWith('http') && !project.demoUrl.includes('github.com') 
+                  ? 'WEBSITE' 
+                  : project.category === 'Plugin' || project.category === 'Custom System'
+                    ? 'DOWNLOAD PLUGIN' 
+                    : 'DOWNLOAD PACK'}
               </Button>
               <ReadMeModal content={project.howToUse} />
             </div>

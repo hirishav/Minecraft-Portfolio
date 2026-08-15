@@ -180,32 +180,51 @@ Everything is mentioned in the website.
     languages: ["Java", "Gradle"],
     minecraftVersion: "1.21.x",
     status: "Completed",
-    demoUrl: "https://github.com/rishav/QuestForge",
-    howToUse: `QuestForge Plugin
+    demoUrl: "/downloads/QuestForge.jar",
+    howToUse: `Custom Minecraft Plugin: QuestForge
 
-WHAT IT IS:
-QuestForge is a production-quality, dynamic quest engine for Minecraft Paper 1.21.x. It automatically generates engaging daily and weekly quests based on player progression to keep your community active.
+WHAT THIS PLUGIN DOES:
+This is a production-quality, dynamic quest engine designed for Minecraft servers. Instead of boring, static missions, it creates highly engaging, dynamic daily and weekly quests based on a player's progression. It makes your server much more engaging and gives players a reason to log in every day.
+Description from plugin: QuestForge
+[Made By Rishav]
 
-KEY FEATURES:
-- Zero-Lag Performance: Fully asynchronous database operations (SQLite & MySQL support).
-- Immersive GUIs: Beautiful, paginated, and animated inventory menus for tracking quests.
-- Highly Customizable: Easily modify quest templates, rewards, and requirements via configuration files.
-- Developer API: Allows custom objectives and rewards to be registered programmatically.
-- Integrations: Native support for PlaceholderAPI and Vault for economy rewards.
+WHAT IT ADDS / WHERE TO LOOK FOR CHANGES:
+- Dynamic Quest Generation: Automatically generates random daily and weekly quests for each player.
+- Asynchronous Database: Uses SQLite and MySQL to save data in the background, meaning 0 lag on your main server thread.
+- Immersive GUIs: Players can browse their quests through beautiful, paginated, and animated inventory menus.
+- Custom Objectives: You can set objectives like breaking blocks, killing mobs, crafting, or even custom plugin events.
+- Advanced Rewards System: Give players items, money (Vault), XP, or run custom commands when they complete quests.
+- Progression System: Quests can scale based on player level or rank.
+- Developer API: Other developers can hook into QuestForge to add their own custom objectives and rewards.
+- Full Integration: Works seamlessly with PlaceholderAPI for custom holograms/scoreboards and Vault for economy.
 
-HOW TO INSTALL & USE:
-1. Download the latest \`QuestForge-1.0.0.jar\` from the GitHub Releases.
-2. Drop the jar file into your server's \`plugins\` folder.
-3. (Optional but recommended) Install \`PlaceholderAPI\` and \`Vault\` for extended functionality.
-4. Restart your server to generate the default configuration files.
-5. Customize your settings, quest templates, and rewards in \`plugins/QuestForge/config.yml\`.
-6. Run \`/quests reload\` to apply any configuration changes.
-7. In-game, players can use \`/quests\` to open the main menu and \`/quests active\` to view their current tasks!
+WHAT IS INSIDE THE PLUGIN:
+When you install the plugin, it generates a 'QuestForge' folder in your plugins directory containing:
+1. config.yml - Main settings for database, language, and core mechanics.
+2. quests/ - A folder containing all your quest templates (daily.yml, weekly.yml, etc.).
+3. lang.yml - Fully customizable messages so you can translate the plugin to any language.
+4. playerdata/ - Local SQLite storage for player progress (if MySQL is not used).
+
+SUPPORTED VERSION:
+This plugin supports Minecraft version(s): 1.21.x (and newer)
+Java 21+ required
+
+HOW TO INSTALL IT / TEST IT:
+1. Download the \`QuestForge.jar\` using the Download Plugin button.
+2. Download required dependencies (Vault, PlaceholderAPI) if you wish to use economy/holograms.
+3. Place the downloaded .jar files into your server's \`plugins\` folder.
+4. Restart your server completely (Do not use /reload).
+5. The plugin will automatically generate its configuration folders.
+6. Open \`plugins/QuestForge/config.yml\` to set up your database (SQLite is on by default, so it works out of the box).
+7. Go into the \`quests\` folder to create or modify quest templates. You can define what players need to do and what they get.
+8. Once configured, type \`/quests reload\` in the console or in-game (requires admin permission).
+9. Players can type \`/quests\` in-game to open the beautiful GUI and start completing their daily/weekly missions!
 
 COMMANDS & PERMISSIONS:
-- \`/quests\` - Opens the main menu (Permission: \`questforge.use\`)
-- \`/quests active\` - Opens the active quests menu (Permission: \`questforge.use\`)
-- \`/quests reload\` - Reloads the plugin configurations (Permission: \`questforge.admin\`)
+- \`/quests\` - Opens the main QuestForge menu. (Permission: \`questforge.use\`)
+- \`/quests active\` - Directly opens the active quests menu. (Permission: \`questforge.use\`)
+- \`/quests admin\` - Opens the admin control panel. (Permission: \`questforge.admin\`)
+- \`/quests reload\` - Reloads all configuration and language files safely. (Permission: \`questforge.admin\`)
 `
   },
   {
@@ -225,31 +244,47 @@ COMMANDS & PERMISSIONS:
     languages: ["Java", "Gradle"],
     minecraftVersion: "1.21.x",
     status: "Completed",
-    demoUrl: "https://github.com/rishav/DungeonCore",
-    howToUse: `DungeonCore Plugin
+    demoUrl: "/downloads/DungeonCore.jar",
+    howToUse: `Custom Minecraft Plugin: DungeonCore
 
-WHAT IT IS:
-DungeonCore is a massive procedural instanced dungeon system for Minecraft Paper 1.21.x. It provides an immersive RPG experience by generating unique, isolated dungeon layouts for parties to conquer.
+WHAT THIS PLUGIN DOES:
+DungeonCore is a massive procedural instanced dungeon system for Minecraft servers. It provides an immersive RPG experience by generating unique, isolated dungeon layouts for parties to conquer, similar to popular MMORPGs.
+Description from plugin: DungeonCore
+[Made By Rishav]
 
-KEY FEATURES:
-- Dynamic Instancing: Completely isolated dungeon instances so multiple parties can run dungeons simultaneously without interference.
+WHAT IT ADDS / WHERE TO LOOK FOR CHANGES:
+- Dynamic Instancing: Creates completely isolated dungeon instances. Multiple parties can run dungeons simultaneously without ever seeing or interfering with each other.
 - Procedural Generation: Dungeons are built dynamically by stitching together various room templates, ensuring no two runs are exactly the same.
 - Advanced Combat: Face off against custom mobs and engage in epic, multi-phase boss battles with unique mechanics and abilities.
 - Party & Difficulty System: Built-in GUI-driven party management and scalable difficulty levels that adjust loot drops and mob strength.
 - High Performance: Utilizes an asynchronous SQLite database to handle player data and instance tracking without lagging the main server thread.
 
-HOW TO INSTALL & USE:
-1. Compile the project via Gradle or download the built \`DungeonCore.jar\` from the GitHub Releases.
-2. Drop the jar into your server's \`plugins\` folder.
-3. Restart the server to generate the default folders and configuration files.
-4. Add your custom room templates to the \`plugins/DungeonCore/structures\` folder.
-5. Customize boss mechanics, mob stats, and loot tables in the respective YAML files.
-6. In-game, use the \`/dungeon\` command to open the main menu, create a party, select your difficulty, and dive into a dungeon!
+WHAT IS INSIDE THE PLUGIN:
+When you install the plugin, it generates a 'DungeonCore' folder containing:
+1. config.yml - Main settings for instances, database, and party limits.
+2. structures/ - A folder to place your custom room template schematics.
+3. bosses.yml - Configuration for custom multi-phase bosses.
+4. mobs.yml - Configuration for custom dungeon mobs.
+5. loot.yml - Dynamic loot tables for varying difficulties.
 
-COMMANDS:
-- \`/dungeon\` - Opens the main Dungeon GUI.
-- \`/party create/invite/join\` - Manage your dungeon group.
-- \`/dungeon leave\` - Exit your current instance safely.
+SUPPORTED VERSION:
+This plugin supports Minecraft version(s): 1.21.x (and newer)
+Java 21+ required
+
+HOW TO INSTALL IT / TEST IT:
+1. Download the \`DungeonCore.jar\` using the Download Plugin button.
+2. Place the downloaded .jar file into your server's \`plugins\` folder.
+3. Restart your server completely (Do not use /reload).
+4. The plugin will automatically generate its configuration folders.
+5. Add your custom room templates to the \`plugins/DungeonCore/structures\` folder.
+6. Customize boss mechanics, mob stats, and loot tables in the respective YAML files.
+7. In-game, use the \`/dungeon\` command to open the main menu, create a party, select your difficulty, and dive into a dungeon!
+
+COMMANDS & PERMISSIONS:
+- \`/dungeon\` - Opens the main Dungeon GUI. (Permission: \`dungeoncore.use\`)
+- \`/party create/invite/join\` - Manage your dungeon group. (Permission: \`dungeoncore.party\`)
+- \`/dungeon leave\` - Exit your current instance safely. (Permission: \`dungeoncore.use\`)
+- \`/dungeon admin\` - Admin commands for managing instances. (Permission: \`dungeoncore.admin\`)
 `
   }
 ];

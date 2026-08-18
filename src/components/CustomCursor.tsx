@@ -1,17 +1,25 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './CustomCursor.module.css';
+
+interface Point {
+  x: number;
+  y: number;
+}
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef<Point>({ x: -1000, y: -1000 });
+  const pointsRef = useRef<Point[]>([]);
 
   useEffect(() => {
-    // Check if it's a touch device to disable cursor
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const onMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
 
     const onMouseOver = (e: MouseEvent) => {
@@ -30,21 +38,132 @@ export default function CustomCursor() {
 
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseover', onMouseOver);
+    
+    // Animation loop for dragon tail
+    let animationFrameId: number;
+    const canvas = canvasRef.current;
+    
+    // Initialize points
+    const numPoints = 30;
+    pointsRef.current = Array(numPoints).fill({ x: -1000, y: -1000 });
+    
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const render = () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          const points = pointsRef.current;
+          
+          // Move head to mouse
+          const headX = points[0].x + (mouseRef.current.x - points[0].x) * 0.5;
+          const headY = points[0].y + (mouseRef.current.y - points[0].y) * 0.5;
+          
+          const newPoints = [{ x: headX, y: headY }];
+          
+          // Move rest of body
+          for (let i = 1; i < numPoints; i++) {
+            newPoints.push({
+              x: points[i].x + (newPoints[i-1].x - points[i].x) * 0.4,
+              y: points[i].y + (newPoints[i-1].y - points[i].y) * 0.4
+            });
+          }
+          
+          pointsRef.current = newPoints;
+          
+          // Draw dragon
+          for (let i = 0; i < numPoints - 1; i++) {
+            const p1 = newPoints[i];
+            const p2 = newPoints[i+1];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const angle = Math.atan2(dy, dx);
+            
+            // Only draw if points have caught up to screen (avoid glitch at start)
+            if (p1.x < -500) continue;
+
+            const size = Math.max(0.5, 8 - i * 0.25); // Tapering size
+            const alpha = Math.max(0, 1 - i / numPoints);
+            
+            ctx.save();
+            ctx.translate(p1.x, p1.y);
+            ctx.rotate(angle);
+            
+            // Use a bright, glowing red similar to the screenshot
+            ctx.fillStyle = `rgba(255, 10, 10, ${alpha})`;
+            ctx.strokeStyle = `rgba(255, 30, 30, ${alpha * 0.6})`;
+            ctx.lineWidth = 1.5;
+            
+            // Draw a diamond/scale shape for the body
+            ctx.beginPath();
+            ctx.moveTo(size, 0);
+            ctx.lineTo(0, size/1.5);
+            ctx.lineTo(-size, 0);
+            ctx.lineTo(0, -size/1.5);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Draw side spines for some segments
+            if (i % 3 === 0 && i > 1 && i < numPoints - 8) {
+                // Top spine
+                ctx.beginPath();
+                ctx.moveTo(0, size/2);
+                ctx.quadraticCurveTo(-size, size*2, -size*3, size*4);
+                ctx.stroke();
+                
+                // Bottom spine
+                ctx.beginPath();
+                ctx.moveTo(0, -size/2);
+                ctx.quadraticCurveTo(-size, -size*2, -size*3, -size*4);
+                ctx.stroke();
+            }
+            
+            // Draw larger head at index 0
+            if (i === 0) {
+              ctx.beginPath();
+              ctx.moveTo(size * 2, 0);
+              ctx.lineTo(-size * 1.5, size * 1.5);
+              ctx.lineTo(-size * 1.5, -size * 1.5);
+              ctx.closePath();
+              ctx.fill();
+            }
+
+            ctx.restore();
+          }
+          
+          animationFrameId = requestAnimationFrame(render);
+        };
+        
+        render();
+      }
+    }
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseover', onMouseOver);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
     <>
-      <div 
-        className={`${styles.cursor} ${isHovering ? styles.hovering : ''}`} 
-        style={{ left: `${position.x}px`, top: `${position.y}px` }} 
+      <canvas
+        ref={canvasRef}
+        style={{ 
+          pointerEvents: 'none', 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          zIndex: 9998,
+          width: '100vw',
+          height: '100vh'
+        }}
       />
       <div 
-        className={styles.cursorDot} 
+        className={`${styles.cursor} ${isHovering ? styles.hovering : ''}`} 
         style={{ left: `${position.x}px`, top: `${position.y}px` }} 
       />
     </>

@@ -235,7 +235,7 @@ export default function Home() {
                 textAlign: 'center'
               }}>
                 <div style={{ color: 'var(--mc-yellow)' }}>RISHAV DAS</div>
-                <div style={{ color: '#888', fontSize: '0.9rem' }}>Developer • Creator • Administrator</div>
+                <div style={{ color: '#888', fontSize: '0.9rem' }}>Full Stack Engineer • Shader Dev • UI/UX Designer</div>
               </div>
             </div>
             </div>

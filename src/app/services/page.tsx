@@ -105,7 +105,7 @@ export default function Services() {
             letterSpacing: '-2px',
             textTransform: 'uppercase'
           }}>
-            SYSTEM_MODULES
+            SYSTEM MODULES
           </h1>
           <p style={{ color: '#888', fontSize: '1.2rem', marginTop: '1rem', maxWidth: '600px' }}>
             Comprehensive engineering solutions ranging from highly optimized game mechanics to full-stack web applications and robust cloud infrastructure.

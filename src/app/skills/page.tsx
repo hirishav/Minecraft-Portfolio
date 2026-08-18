@@ -182,19 +182,7 @@ export default function Skills() {
                 )}
               </div>
 
-              {!hovered && (
-                <div style={{ 
-                  position: 'absolute', 
-                  bottom: '20px', 
-                  color: '#555', 
-                  fontFamily: 'monospace', 
-                  fontSize: '1.2rem',
-                  letterSpacing: '2px',
-                  fontWeight: 'bold'
-                }}>
-                  [ AWAITING_INSPECTION ]
-                </div>
-              )}
+
             </div>
 
             {/* Details Card */}

@@ -21,7 +21,7 @@ export default function Home() {
               Available for work - Chennai, India
             </div>
 
-            <h1 className="mc-shadow hero-title">
+            <h1 className="mc-shadow hero-title sexy-move">
               RISHAV<br/>DAS
             </h1>
 
@@ -31,13 +31,22 @@ export default function Home() {
                 { text: 'Resource Pack Creator', color: 'var(--mc-yellow)' },
                 { text: 'Verified Discord Bot Dev', color: '#5ea2e8' },
                 { text: 'Texture Pack Dev', color: 'var(--mc-gold)' },
-                { text: 'Minecraft Launcher Builder', color: 'var(--mc-red)' }
+                { text: 'Minecraft Launcher Builder', color: 'var(--mc-red)' },
+                { text: 'Website Developer', color: '#ff69b4' },
+                { text: 'App Developer', color: '#00ffcc' },
+                { text: 'Full Stack Engineer', color: '#ff9900' },
+                { text: 'API Architect', color: '#a020f0' },
+                { text: 'UI/UX Designer', color: '#ff1493' },
+                { text: 'Cloud Systems Architect', color: '#00ced1' },
+                { text: 'Database Expert', color: '#32cd32' }
               ].map((role, i) => (
-                <div key={i} style={{
+                <div key={i} className="role-tag" style={{
                   border: '2px solid #555',
                   padding: '0.5rem 1rem',
                   color: role.color,
-                  fontSize: '1.1rem'
+                  fontSize: '1.1rem',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
                 }}>
                   {role.text}
                 </div>

@@ -39,12 +39,24 @@ export default function Home() {
                 border-color: color-mix(in srgb, var(--tag-color) 80%, transparent) !important;
                 box-shadow: 0 10px 25px color-mix(in srgb, var(--tag-color) 50%, transparent), 0 0 15px color-mix(in srgb, var(--tag-color) 80%, transparent) !important;
               }
-              @keyframes enchantedText {
-                0% { background-position: 0% 50%; filter: drop-shadow(0px 5px 25px rgba(94, 162, 232, 0.6)); }
-                25% { filter: drop-shadow(0px 5px 25px rgba(160, 32, 240, 0.6)); }
-                50% { background-position: 100% 50%; filter: drop-shadow(0px 5px 25px rgba(255, 20, 147, 0.6)); }
-                75% { filter: drop-shadow(0px 5px 25px rgba(0, 255, 204, 0.6)); }
-                100% { background-position: 0% 50%; filter: drop-shadow(0px 5px 25px rgba(94, 162, 232, 0.6)); }
+              .title-3d {
+                color: #fff;
+                text-shadow: 
+                  3px 3px 0 #aaa,
+                  6px 6px 0 #777,
+                  9px 9px 0 #444,
+                  12px 12px 0 #111,
+                  15px 15px 20px rgba(255, 255, 255, 0.4);
+                transition: all 0.3s ease;
+              }
+              .title-3d:hover {
+                transform: translate(-3px, -3px);
+                text-shadow: 
+                  4px 4px 0 #aaa,
+                  8px 8px 0 #777,
+                  12px 12px 0 #444,
+                  16px 16px 0 #111,
+                  20px 20px 30px rgba(255, 255, 255, 0.6);
               }
             `}} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--mc-green)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
@@ -52,15 +64,11 @@ export default function Home() {
               Available for work - Chennai, India
             </div>
 
-            <h1 className="hero-title sexy-move" style={{
-              background: 'linear-gradient(45deg, #5ea2e8, #a020f0, #ff1493, #00ffcc)',
-              backgroundSize: '300% 300%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              animation: 'enchantedText 6s ease infinite, sexyMove 3s ease-in-out infinite',
+            <h1 className="hero-title title-3d" style={{
               marginBottom: '1.5rem',
               display: 'inline-block',
-              paddingRight: '20px'
+              paddingRight: '20px',
+              cursor: 'default'
             }}>
               RISHAV<br/>DAS
             </h1>

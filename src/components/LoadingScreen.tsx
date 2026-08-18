@@ -71,7 +71,12 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
             }}></div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '1.1rem', color: '#888' }}>
-            <span>Building terrain...</span>
+            <span>{
+              progress < 25 ? "Connecting to NASA..." :
+              progress < 50 ? "Taking permission from Narendra Modi..." :
+              progress < 75 ? "Getting inside SBI bank..." :
+              "Donating money to Elon Musk..."
+            }</span>
             <span>{Math.min(progress, 100)}%</span>
           </div>
           

@@ -94,26 +94,11 @@ export default function AudioManager() {
     osc.stop(ctx.currentTime + 0.3);
   };
 
-  const playHover = () => {
-    if (!audioCtxRef.current || isMutedRef.current) return;
-    const ctx = audioCtxRef.current;
-    
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(800, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.05);
-    
-    gain.gain.setValueAtTime(0, ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-    
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    
-    osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + 0.05);
+  const playWow = () => {
+    if (isMutedRef.current) return;
+    const wowSound = new Audio('/sounds/wow.mp3');
+    wowSound.volume = 0.5; // Adjust volume as needed
+    wowSound.play().catch(e => console.error("Wow playback failed", e));
   };
 
   useEffect(() => {
@@ -162,7 +147,7 @@ export default function AudioManager() {
       
       if (isInteractive && isInteractive !== lastHoveredElement) {
         lastHoveredElement = isInteractive;
-        playHover();
+        playWow();
       } else if (!isInteractive) {
         lastHoveredElement = null;
       }

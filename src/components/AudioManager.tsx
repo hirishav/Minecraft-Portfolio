@@ -9,6 +9,8 @@ export default function AudioManager() {
   
   const [isMuted, setIsMuted] = useState(false);
   const isMutedRef = useRef(false);
+  
+  const wowAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation(); // prevent triggering the global click
@@ -95,13 +97,16 @@ export default function AudioManager() {
   };
 
   const playWow = () => {
-    if (isMutedRef.current) return;
-    const wowSound = new Audio('/sounds/wow.mp3');
-    wowSound.volume = 0.5; // Adjust volume as needed
+    if (isMutedRef.current || !wowAudioRef.current) return;
+    const wowSound = wowAudioRef.current.cloneNode() as HTMLAudioElement;
+    wowSound.volume = 0.5;
     wowSound.play().catch(e => console.error("Wow playback failed", e));
   };
 
   useEffect(() => {
+    wowAudioRef.current = new Audio('/sounds/wow.mp3');
+    wowAudioRef.current.preload = 'auto';
+
     const initAudio = () => {
       if (!audioCtxRef.current) {
         audioCtxRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();

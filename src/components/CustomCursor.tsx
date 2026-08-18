@@ -74,7 +74,7 @@ export default function CustomCursor() {
           
           pointsRef.current = newPoints;
           
-          // Draw dragon
+          // Draw dragon segments (skeletal spine)
           for (let i = 0; i < numPoints - 1; i++) {
             const p1 = newPoints[i];
             const p2 = newPoints[i+1];
@@ -92,43 +92,70 @@ export default function CustomCursor() {
             ctx.translate(p1.x, p1.y);
             ctx.rotate(angle);
             
-            // Use a bright, glowing red similar to the screenshot
-            ctx.fillStyle = `rgba(255, 10, 10, ${alpha})`;
-            ctx.strokeStyle = `rgba(255, 30, 30, ${alpha * 0.6})`;
-            ctx.lineWidth = 1.5;
+            // Set glow effect
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = 'rgba(255, 0, 0, 0.8)';
             
-            // Draw a diamond/scale shape for the body
+            // Use a bright, glowing red
+            ctx.fillStyle = `rgba(255, 20, 20, ${alpha})`;
+            ctx.strokeStyle = `rgba(255, 50, 50, ${alpha * 0.8})`;
+            ctx.lineWidth = 2;
+            
+            // Draw central spine dot
             ctx.beginPath();
-            ctx.moveTo(size, 0);
-            ctx.lineTo(0, size/1.5);
-            ctx.lineTo(-size, 0);
-            ctx.lineTo(0, -size/1.5);
-            ctx.closePath();
+            ctx.arc(0, 0, size * 0.6, 0, Math.PI * 2);
             ctx.fill();
             
-            // Draw side spines for some segments
-            if (i % 3 === 0 && i > 1 && i < numPoints - 8) {
-                // Top spine
+            // Connect to next spine segment
+            if (i < numPoints - 2) {
+              const nextDist = Math.hypot(dx, dy);
+              ctx.beginPath();
+              ctx.moveTo(0, 0);
+              ctx.lineTo(nextDist, 0);
+              ctx.stroke();
+            }
+            
+            // Draw skeletal ribs every few segments
+            if (i % 2 === 0 && i > 0 && i < numPoints - 5) {
+                const ribLength = size * 3.5;
+                const ribSweep = size * 1.5;
+                
+                // Top rib
                 ctx.beginPath();
-                ctx.moveTo(0, size/2);
-                ctx.quadraticCurveTo(-size, size*2, -size*3, size*4);
+                ctx.moveTo(0, size * 0.6);
+                ctx.quadraticCurveTo(-ribSweep, ribLength * 0.5, -ribSweep, ribLength);
                 ctx.stroke();
                 
-                // Bottom spine
+                // Bottom rib
                 ctx.beginPath();
-                ctx.moveTo(0, -size/2);
-                ctx.quadraticCurveTo(-size, -size*2, -size*3, -size*4);
+                ctx.moveTo(0, -size * 0.6);
+                ctx.quadraticCurveTo(-ribSweep, -ribLength * 0.5, -ribSweep, -ribLength);
                 ctx.stroke();
             }
             
-            // Draw larger head at index 0
+            // Draw larger head at index 0 (skull-like)
             if (i === 0) {
               ctx.beginPath();
-              ctx.moveTo(size * 2, 0);
-              ctx.lineTo(-size * 1.5, size * 1.5);
-              ctx.lineTo(-size * 1.5, -size * 1.5);
+              // Skull base
+              ctx.moveTo(size, size * 1.2);
+              ctx.lineTo(size * 2, size * 0.8);
+              ctx.lineTo(size * 3, 0); // Snout tip
+              ctx.lineTo(size * 2, -size * 0.8);
+              ctx.lineTo(size, -size * 1.2);
               ctx.closePath();
               ctx.fill();
+              ctx.stroke();
+              
+              // Horns
+              ctx.beginPath();
+              ctx.moveTo(size, size * 1.2);
+              ctx.quadraticCurveTo(0, size * 3, -size * 2, size * 4);
+              ctx.stroke();
+              
+              ctx.beginPath();
+              ctx.moveTo(size, -size * 1.2);
+              ctx.quadraticCurveTo(0, -size * 3, -size * 2, -size * 4);
+              ctx.stroke();
             }
 
             ctx.restore();

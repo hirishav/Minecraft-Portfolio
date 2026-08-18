@@ -10,7 +10,7 @@ const SKILLS = [
   { id: 4, icon: 'nether_star.png', name: 'React & Next.js', rarity: 'Legendary', color: '#FFAA00', type: 'Frameworks', desc: 'Building dynamic, blazing-fast web interfaces, portfolios, and full-stack apps.' },
   { id: 5, icon: 'enchanted_book.png', name: 'AI & ML Integration', rarity: 'Legendary', color: '#FFAA00', type: 'Tools', desc: 'LLMs, AI integration, prompt engineering, and intelligent system design.' },
   { id: 6, icon: 'filled_map.png', name: 'BungeeCord & Velocity', rarity: 'Legendary', color: '#FFAA00', type: 'Minecraft', desc: 'Proxy software for architecting and deploying scalable server networks.' },
-  { id: 7, icon: 'ender_eye.png', name: 'Shader Packs', rarity: 'Legendary', color: '#FFAA00', type: 'Minecraft', desc: 'Advanced GLSL shader development for immersive visual overhauls.' },
+  { id: 7, icon: 'diamond.png', name: 'Shader Packs', rarity: 'Legendary', color: '#FFAA00', type: 'Minecraft', desc: 'Advanced GLSL shader development for immersive visual overhauls.' },
 
   // --- EPIC ---
   { id: 10, icon: 'emerald.png', name: 'Python', rarity: 'Epic', color: '#FF55FF', type: 'Languages', desc: 'Versatile language for scripting, backend services, and machine learning.' },
@@ -19,7 +19,7 @@ const SKILLS = [
   { id: 13, icon: 'iron_pickaxe.png', name: 'DevOps & Linux', rarity: 'Epic', color: '#FF55FF', type: 'Tools', desc: 'Linux environments, Docker containerization, and automated CI/CD pipelines.' },
   { id: 14, icon: 'experience_bottle.png', name: 'Forge & Fabric', rarity: 'Epic', color: '#FF55FF', type: 'Minecraft', desc: 'Creating custom client-side and server-side mod modifications.' },
   { id: 15, icon: 'ender_pearl.png', name: 'Cloud Architecture', rarity: 'Epic', color: '#FF55FF', type: 'Infrastructure', desc: 'Deploying and managing scalable Minecraft networks on AWS, GCP, and VPS.' },
-  { id: 16, icon: 'compass.png', name: 'UI/UX Design', rarity: 'Epic', color: '#FF55FF', type: 'Design', desc: 'Designing intuitive, engaging, and modern user interfaces for web and game.' },
+  { id: 16, icon: 'painting.png', name: 'UI/UX Design', rarity: 'Epic', color: '#FF55FF', type: 'Design', desc: 'Designing intuitive, engaging, and modern user interfaces for web and game.' },
 
   // --- RARE & COMMON ---
   { id: 19, icon: 'iron_sword.png', name: 'C & C++', rarity: 'Rare', color: '#5555FF', type: 'Languages', desc: 'Low-level performance, game engines, and systems programming.' },
@@ -143,27 +143,30 @@ export default function Skills() {
               boxShadow: hovered ? `0 15px 35px rgba(0,0,0,0.5), inset 0 0 30px rgba(${hexToRgb(hovered.color)}, 0.15)` : 'none',
               backdropFilter: 'blur(15px)',
               transition: 'all 0.3s ease',
+              overflow: 'hidden'
             }}>
-              <div style={{ position: 'relative', width: '160px', height: '280px' }}>
+              <div style={{ position: 'relative', width: '200px', height: '300px', marginTop: '20px' }}>
+                {/* 3D Steve Render via Crafatar */}
                 <Image 
-                  src="/minecraft/steve.png" 
+                  src="https://crafatar.com/renders/body/8667ba71-b85a-4004-af54-457a9734eed7?overlay=true" 
                   alt="Steve" 
                   fill
                   style={{ 
-                    objectFit: 'contain', 
-                    imageRendering: 'pixelated',
-                    opacity: hovered ? 1 : 0.5,
-                    transition: 'all 0.3s ease'
+                    objectFit: 'contain',
+                    opacity: hovered ? 1 : 0.4,
+                    transition: 'all 0.3s ease',
+                    filter: hovered ? 'drop-shadow(0 0 20px rgba(255,255,255,0.1))' : 'grayscale(100%)'
                   }} 
+                  unoptimized={true}
                 />
                 
                 {hovered && (
                   <div style={{ 
                     position: 'absolute', 
-                    top: '55%', 
-                    right: '-25px', 
-                    width: '64px', 
-                    height: '64px',
+                    top: '40%', 
+                    right: '10px', 
+                    width: '70px', 
+                    height: '70px',
                     animation: 'itemBob 2s infinite ease-in-out',
                     filter: `drop-shadow(0 0 15px ${hovered.color})`,
                     zIndex: 10

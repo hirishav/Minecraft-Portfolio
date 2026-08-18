@@ -230,12 +230,50 @@ export default function Home() {
                 bottom: 0,
                 left: 0,
                 width: '100%',
-                background: 'rgba(0,0,0,0.8)',
-                padding: '1rem',
-                textAlign: 'center'
+                background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 60%, transparent 100%)',
+                padding: '2rem 1rem 1rem 1rem',
+                textAlign: 'center',
+                backdropFilter: 'blur(2px)'
               }}>
-                <div style={{ color: 'var(--mc-yellow)' }}>RISHAV DAS</div>
-                <div style={{ color: '#888', fontSize: '0.9rem' }}>Full Stack Engineer • Shader Dev • UI/UX Designer</div>
+                <div style={{ 
+                  color: '#fff', 
+                  fontSize: '1.4rem',
+                  fontWeight: 'bold',
+                  letterSpacing: '3px',
+                  textShadow: '0 0 15px rgba(255, 255, 255, 0.5)',
+                  marginBottom: '0.5rem',
+                  fontFamily: 'monospace'
+                }}>
+                  RISHAV DAS
+                </div>
+                <div style={{ 
+                  display: 'flex', 
+                  gap: '0.5rem', 
+                  justifyContent: 'center', 
+                  flexWrap: 'wrap'
+                }}>
+                  {[
+                    { text: 'Full Stack', color: '#ff1493' },
+                    { text: 'Shader Dev', color: '#00ffcc' },
+                    { text: 'UI/UX', color: '#ff9900' }
+                  ].map((role, idx) => (
+                    <span key={idx} style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 'bold',
+                      color: role.color,
+                      backgroundColor: `${role.color}15`,
+                      border: `1px solid ${role.color}50`,
+                      padding: '4px 10px',
+                      borderRadius: '20px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px',
+                      boxShadow: `0 0 10px ${role.color}40`,
+                      animation: `float${idx % 3} ${4 + idx}s ease-in-out infinite`
+                    }}>
+                      {role.text}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
             </div>

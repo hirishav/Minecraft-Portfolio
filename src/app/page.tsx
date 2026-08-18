@@ -38,7 +38,11 @@ export default function Home() {
                 { text: 'API Architect', color: '#a020f0' },
                 { text: 'UI/UX Designer', color: '#ff1493' },
                 { text: 'Cloud Systems Architect', color: '#00ced1' },
-                { text: 'Database Expert', color: '#32cd32' }
+                { text: 'Database Expert', color: '#32cd32' },
+                { text: 'Shader Packs Developer', color: '#8a2be2' },
+                { text: 'Mod Developer', color: '#ff4500' },
+                { text: 'Server Administrator', color: '#4682b4' },
+                { text: '3D Modeler', color: '#ff8c00' }
               ].map((role, i) => (
                 <div key={i} className="role-tag" style={{
                   border: '2px solid #555',

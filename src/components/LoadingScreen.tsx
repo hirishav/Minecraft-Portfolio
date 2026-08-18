@@ -17,9 +17,9 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
             setTimeout(() => setStage('done'), 500);
             return 100;
           }
-          return prev + Math.floor(Math.random() * 15) + 5;
+          return prev + Math.floor(Math.random() * 10) + 3;
         });
-      }, 200);
+      }, 350);
       return () => clearInterval(interval);
     }
   }, [stage]);

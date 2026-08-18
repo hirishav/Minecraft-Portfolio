@@ -98,8 +98,10 @@ export default function AudioManager() {
 
   const playWow = () => {
     if (isMutedRef.current || !wowAudioRef.current) return;
-    const wowSound = wowAudioRef.current.cloneNode() as HTMLAudioElement;
+    const wowSound = wowAudioRef.current;
+    wowSound.currentTime = 0; // Cut off previous playback
     wowSound.volume = 0.5;
+    wowSound.playbackRate = 1.5; // Make it play faster and shorter
     wowSound.play().catch(e => console.error("Wow playback failed", e));
   };
 

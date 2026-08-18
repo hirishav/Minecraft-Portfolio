@@ -16,6 +16,30 @@ export default function Home() {
         <div className="responsive-grid-hero">
           {/* Left Column */}
           <div>
+            <style dangerouslySetInnerHTML={{__html: `
+              .role-tag-modern {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+                border-radius: 50px;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                backdrop-filter: blur(4px);
+                position: relative;
+              }
+              .role-tag-modern:hover {
+                transform: translateY(-5px) scale(1.05);
+                z-index: 10;
+                background-color: color-mix(in srgb, var(--tag-color) 25%, transparent) !important;
+                border-color: color-mix(in srgb, var(--tag-color) 80%, transparent) !important;
+                box-shadow: 0 10px 25px color-mix(in srgb, var(--tag-color) 50%, transparent), 0 0 15px color-mix(in srgb, var(--tag-color) 80%, transparent) !important;
+              }
+            `}} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--mc-green)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
               <div style={{ width: '12px', height: '12px', backgroundColor: 'var(--mc-green)' }}></div>
               Available for work - Chennai, India
@@ -44,14 +68,16 @@ export default function Home() {
                 { text: 'Server Administrator', color: '#4682b4' },
                 { text: '3D Modeler', color: '#ff8c00' }
               ].map((role, i) => (
-                <div key={i} className="role-tag" style={{
-                  border: '2px solid #555',
-                  padding: '0.5rem 1rem',
-                  color: role.color,
-                  fontSize: '1.1rem',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}>
+                <div key={i} className="role-tag-modern" style={{
+                  '--tag-color': role.color,
+                  border: `1px solid color-mix(in srgb, var(--tag-color) 40%, transparent)`,
+                  backgroundColor: `color-mix(in srgb, var(--tag-color) 10%, transparent)`,
+                  color: 'var(--tag-color)',
+                  boxShadow: `0 0 10px color-mix(in srgb, var(--tag-color) 20%, transparent)`,
+                  animation: `float${i % 3} ${4 + (i % 3)}s ease-in-out infinite alternate`,
+                  animationDelay: `${i * 0.2}s`
+                } as React.CSSProperties}>
+                  <span style={{ fontSize: '1.2rem', textShadow: `0 0 10px var(--tag-color)` }}>•</span>
                   {role.text}
                 </div>
               ))}

@@ -194,10 +194,23 @@ export default function Services() {
       </div>
 
       <style dangerouslySetInnerHTML={{__html: `
+        @keyframes floatService {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .service-card {
+          animation: floatService 6s ease-in-out infinite;
+        }
+        .service-card:nth-child(even) {
+          animation-duration: 7s;
+          animation-delay: 1.5s;
+        }
         .service-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-          border-color: rgba(255,255,255,0.2) !important;
+          animation-play-state: paused;
+          transform: translateY(-15px) scale(1.03) !important;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.1);
+          border-color: rgba(255,255,255,0.3) !important;
+          background-color: rgba(30, 30, 35, 0.8) !important;
         }
         .service-card:hover .accent-line {
           box-shadow: 0 0 20px currentColor;

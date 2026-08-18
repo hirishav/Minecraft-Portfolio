@@ -146,9 +146,9 @@ export default function Skills() {
               overflow: 'hidden'
             }}>
               <div style={{ position: 'relative', width: '200px', height: '300px', marginTop: '20px' }}>
-                {/* 3D Steve Render via Crafatar */}
+                {/* 3D Steve Render (Local) */}
                 <Image 
-                  src="https://crafatar.com/renders/body/8667ba71-b85a-4004-af54-457a9734eed7?overlay=true" 
+                  src="/minecraft/steve_3d.png" 
                   alt="Steve" 
                   fill
                   style={{ 
@@ -157,7 +157,6 @@ export default function Skills() {
                     transition: 'all 0.3s ease',
                     filter: hovered ? 'drop-shadow(0 0 20px rgba(255,255,255,0.1))' : 'grayscale(100%)'
                   }} 
-                  unoptimized={true}
                 />
                 
                 {hovered && (

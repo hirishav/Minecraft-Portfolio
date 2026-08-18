@@ -38,7 +38,7 @@ export default function About() {
             fontFamily: 'monospace',
             letterSpacing: '-1px'
           }}>
-            &gt; {siteConfig.name}_
+            &gt; {siteConfig.name}
           </h2>
           
           <div style={{ fontSize: '1.25rem', color: '#e0e0e0', lineHeight: '1.8', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -54,40 +54,57 @@ export default function About() {
           </div>
 
           <div style={{ marginTop: '3rem' }}>
-            <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem', borderBottom: '2px solid #444', paddingBottom: '0.5rem', display: 'inline-block' }}>My Arsenal</h3>
+            <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid #444', paddingBottom: '0.5rem', display: 'inline-block' }}>My Arsenal</h3>
             
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2rem' }}>
               {[
-                { name: 'Java & Spigot/Paper', color: '#f89820' },
-                { name: 'Full-Stack Web (Next.js/React)', color: '#61dafb' },
-                { name: 'Python & AI/ML', color: '#3776ab' },
-                { name: 'C / C++', color: '#00599c' },
-                { name: 'TypeScript & JavaScript', color: '#3178c6' },
-                { name: 'Database Architecture (SQL/NoSQL)', color: '#336791' },
-                { name: 'Resource & Shader Packs', color: '#8a2be2' },
-                { name: 'Linux & Docker', color: '#2496ed' },
-                { name: 'Discord Bots & APIs', color: '#5865F2' }
+                { name: 'Java & Spigot/Paper', color: '#f89820', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
+                { name: 'Full-Stack Web (Next.js/React)', color: '#ffffff', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+                { name: 'Python & AI/ML', color: '#3776ab', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+                { name: 'C / C++', color: '#00599c', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+                { name: 'TypeScript & JavaScript', color: '#3178c6', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+                { name: 'Database Architecture', color: '#4479A1', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+                { name: 'Resource & Shader Packs', color: '#FFAA00', icon: '/minecraft/item/diamond.png' },
+                { name: 'Linux & Docker', color: '#2496ed', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+                { name: 'Discord Bots & APIs', color: '#FF55FF', icon: '/minecraft/item/redstone.png' }
               ].map((skill, index) => (
-                <span key={index} style={{
-                  background: 'rgba(0, 0, 0, 0.4)',
-                  border: `1px solid ${skill.color}`,
+                <div key={index} className={`skill-badge-hover float-anim-${index % 3}`} style={{
+                  background: 'rgba(20, 20, 30, 0.6)',
+                  border: `1px solid ${skill.color}55`,
                   color: '#fff',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '8px',
+                  padding: '0.6rem 1.2rem',
+                  borderRadius: '12px',
                   fontSize: '1rem',
                   fontWeight: '500',
-                  boxShadow: `0 0 10px ${skill.color}33`,
-                  transition: 'all 0.3s ease',
-                  cursor: 'default'
-                }} className="skill-badge-hover">
-                  <span style={{ color: skill.color, marginRight: '8px' }}>⚡</span>
+                  boxShadow: `0 8px 20px ${skill.color}22`,
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  backdropFilter: 'blur(10px)'
+                }}>
+                  <div style={{
+                    width: '24px', 
+                    height: '24px', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    background: '#fff',
+                    borderRadius: '4px',
+                    padding: skill.icon.includes('minecraft') ? '0' : '2px',
+                    overflow: 'hidden'
+                  }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={skill.icon} alt={skill.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  </div>
                   {skill.name}
-                </span>
+                </div>
               ))}
             </div>
           </div>
           
-          <div style={{ marginTop: '3rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+          <div style={{ marginTop: '3.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
             <Button href={siteConfig.discordInvite} variant="primary">
               <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 Start a Project <span style={{ fontSize: '1.5rem', lineHeight: '1' }}>🚀</span>
@@ -102,13 +119,31 @@ export default function About() {
       
       <style dangerouslySetInnerHTML={{__html: `
         .skill-badge-hover:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2) !important;
-          background: rgba(255, 255, 255, 0.1) !important;
+          transform: translateY(-8px) scale(1.05) !important;
+          box-shadow: 0 15px 25px rgba(255, 255, 255, 0.15), 0 0 15px currentColor !important;
+          background: rgba(255, 255, 255, 0.08) !important;
+          border-color: currentColor !important;
         }
         .github-link-hover:hover {
           color: #fff !important;
         }
+        
+        @keyframes float0 {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+        }
+        @keyframes float1 {
+          0%, 100% { transform: translateY(-3px); }
+          50% { transform: translateY(4px); }
+        }
+        @keyframes float2 {
+          0%, 100% { transform: translateY(2px); }
+          50% { transform: translateY(-6px); }
+        }
+        
+        .float-anim-0 { animation: float0 4s ease-in-out infinite; }
+        .float-anim-1 { animation: float1 5s ease-in-out infinite; }
+        .float-anim-2 { animation: float2 4.5s ease-in-out infinite; }
       `}} />
     </div>
   );

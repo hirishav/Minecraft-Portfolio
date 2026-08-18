@@ -1,17 +1,31 @@
 .card {
   display: flex;
   flex-direction: column;
-  background-color: var(--surface);
-  border: 2px solid var(--border);
-  transition: all 0.3s ease;
+  background-color: rgba(20, 20, 25, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
   height: 100%;
+  border-radius: 16px;
+  animation: floatProject 5s ease-in-out infinite;
+}
+
+@keyframes floatProject {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.card:nth-child(even) {
+  animation-duration: 6s;
+  animation-delay: 1s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-15px) scale(1.02) !important;
   border-color: var(--accent-green);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 204, 0.2);
+  background-color: rgba(30, 30, 40, 0.9);
 }
 
 .imageWrapper {

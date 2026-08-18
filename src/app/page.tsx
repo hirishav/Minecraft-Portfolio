@@ -18,26 +18,26 @@ export default function Home() {
           <div>
             <style dangerouslySetInnerHTML={{__html: `
               .role-tag-modern {
-                padding: 0.6rem 1.2rem;
+                padding: 0.5rem 1rem;
                 font-size: 0.85rem;
-                border-radius: 50px;
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                color: #888;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 cursor: pointer;
                 text-transform: uppercase;
                 letter-spacing: 1px;
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
+                font-weight: 600;
                 backdrop-filter: blur(4px);
-                position: relative;
               }
               .role-tag-modern:hover {
-                transform: translateY(-5px) scale(1.05);
+                transform: translateY(-3px);
+                color: var(--tag-color);
+                background-color: color-mix(in srgb, var(--tag-color) 10%, transparent);
+                border-color: color-mix(in srgb, var(--tag-color) 50%, transparent);
+                box-shadow: 0 4px 15px color-mix(in srgb, var(--tag-color) 25%, transparent);
                 z-index: 10;
-                background-color: color-mix(in srgb, var(--tag-color) 25%, transparent) !important;
-                border-color: color-mix(in srgb, var(--tag-color) 80%, transparent) !important;
-                box-shadow: 0 10px 25px color-mix(in srgb, var(--tag-color) 50%, transparent), 0 0 15px color-mix(in srgb, var(--tag-color) 80%, transparent) !important;
               }
               .title-3d {
                 color: #fff;
@@ -93,15 +93,8 @@ export default function Home() {
                 { text: '3D Modeler', color: '#ff8c00' }
               ].map((role, i) => (
                 <div key={i} className="role-tag-modern" style={{
-                  '--tag-color': role.color,
-                  border: `1px solid color-mix(in srgb, var(--tag-color) 40%, transparent)`,
-                  backgroundColor: `color-mix(in srgb, var(--tag-color) 10%, transparent)`,
-                  color: 'var(--tag-color)',
-                  boxShadow: `0 0 10px color-mix(in srgb, var(--tag-color) 20%, transparent)`,
-                  animation: `float${i % 3} ${4 + (i % 3)}s ease-in-out infinite alternate`,
-                  animationDelay: `${i * 0.2}s`
+                  '--tag-color': role.color
                 } as React.CSSProperties}>
-                  <span style={{ fontSize: '1.2rem', textShadow: `0 0 10px var(--tag-color)` }}>•</span>
                   {role.text}
                 </div>
               ))}

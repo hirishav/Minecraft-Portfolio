@@ -124,90 +124,113 @@ export default function Skills() {
 
           {/* Tooltip Inspector */}
           <div style={{ 
-            minHeight: '250px'
+            position: 'sticky',
+            top: '6rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem'
           }}>
-            {hovered ? (
-              <div style={{ 
-                backgroundColor: 'rgba(10, 10, 15, 0.9)', 
-                border: `2px solid ${hovered.color}`, 
-                borderRadius: '16px',
-                padding: '2.5rem',
-                boxShadow: `0 15px 35px rgba(0,0,0,0.5), inset 0 0 30px rgba(${hexToRgb(hovered.color)}, 0.15)`,
-                backdropFilter: 'blur(15px)',
-                transition: 'all 0.3s ease',
-                animation: 'fadeIn 0.3s ease-out',
-                position: 'sticky',
-                top: '2rem'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem', borderBottom: `1px solid rgba(255,255,255,0.1)`, paddingBottom: '1.5rem' }}>
+            {/* Character Display */}
+            <div style={{ 
+              height: '350px',
+              backgroundColor: 'rgba(10, 10, 15, 0.9)', 
+              border: hovered ? `2px solid ${hovered.color}` : '2px dashed rgba(255,255,255,0.1)', 
+              borderRadius: '16px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+              boxShadow: hovered ? `0 15px 35px rgba(0,0,0,0.5), inset 0 0 30px rgba(${hexToRgb(hovered.color)}, 0.15)` : 'none',
+              backdropFilter: 'blur(15px)',
+              transition: 'all 0.3s ease',
+            }}>
+              <div style={{ position: 'relative', width: '160px', height: '280px' }}>
+                <Image 
+                  src="/minecraft/steve.png" 
+                  alt="Steve" 
+                  fill
+                  style={{ 
+                    objectFit: 'contain', 
+                    imageRendering: 'pixelated',
+                    opacity: hovered ? 1 : 0.5,
+                    transition: 'all 0.3s ease'
+                  }} 
+                />
+                
+                {hovered && (
                   <div style={{ 
-                    width: '80px', 
-                    height: '80px', 
-                    backgroundColor: 'rgba(0,0,0,0.5)', 
-                    borderRadius: '12px',
-                    border: `1px solid ${hovered.color}`,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    boxShadow: `inset 0 0 15px rgba(${hexToRgb(hovered.color)}, 0.2)`
+                    position: 'absolute', 
+                    top: '55%', 
+                    right: '-25px', 
+                    width: '64px', 
+                    height: '64px',
+                    animation: 'itemBob 2s infinite ease-in-out',
+                    filter: `drop-shadow(0 0 15px ${hovered.color})`,
+                    zIndex: 10
                   }}>
                     <Image 
                       src={`/minecraft/item/${hovered.icon}`} 
                       alt={hovered.name}
-                      width={48}
-                      height={48}
+                      fill
                       style={{ 
-                        width: '60%', 
-                        height: '60%',
-                        filter: `drop-shadow(0 0 10px ${hovered.color})`,
                         ...(hovered.icon === 'command_block.png' ? { objectFit: 'cover', objectPosition: 'top' } : { objectFit: 'contain' })
                       }} 
                     />
                   </div>
-                  <div>
-                    <h2 style={{ color: hovered.color, fontSize: '2rem', margin: '0 0 0.5rem 0', textShadow: `0 0 15px ${hovered.color}80` }}>
-                      {hovered.name}
-                    </h2>
-                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                      <span style={{ 
-                        color: hovered.color, 
-                        backgroundColor: `rgba(${hexToRgb(hovered.color)}, 0.1)`,
-                        border: `1px solid ${hovered.color}`, 
-                        padding: '4px 12px', 
-                        borderRadius: '20px',
-                        fontSize: '0.85rem',
-                        textTransform: 'uppercase',
-                        fontWeight: 'bold',
-                        letterSpacing: '1px'
-                      }}>
-                        {hovered.rarity}
-                      </span>
-                      <span style={{ color: '#888', fontSize: '0.9rem', letterSpacing: '1px' }}>
-                        TYPE: <span style={{ color: '#fff' }}>{hovered.type}</span>
-                      </span>
-                    </div>
-                  </div>
+                )}
+              </div>
+
+              {!hovered && (
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '20px', 
+                  color: '#555', 
+                  fontFamily: 'monospace', 
+                  fontSize: '1.2rem',
+                  letterSpacing: '2px',
+                  fontWeight: 'bold'
+                }}>
+                  [ AWAITING_INSPECTION ]
+                </div>
+              )}
+            </div>
+
+            {/* Details Card */}
+            {hovered && (
+              <div style={{ 
+                backgroundColor: 'rgba(10, 10, 15, 0.9)', 
+                border: `1px solid ${hovered.color}40`, 
+                borderRadius: '16px',
+                padding: '1.5rem',
+                boxShadow: `0 15px 35px rgba(0,0,0,0.5), inset 0 0 20px rgba(${hexToRgb(hovered.color)}, 0.1)`,
+                backdropFilter: 'blur(15px)',
+                animation: 'fadeIn 0.3s ease-out'
+              }}>
+                <h2 style={{ color: hovered.color, fontSize: '1.8rem', margin: '0 0 0.5rem 0', textShadow: `0 0 15px ${hovered.color}80` }}>
+                  {hovered.name}
+                </h2>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                  <span style={{ 
+                    color: hovered.color, 
+                    backgroundColor: `rgba(${hexToRgb(hovered.color)}, 0.1)`,
+                    border: `1px solid ${hovered.color}`, 
+                    padding: '4px 12px', 
+                    borderRadius: '20px',
+                    fontSize: '0.8rem',
+                    textTransform: 'uppercase',
+                    fontWeight: 'bold',
+                    letterSpacing: '1px'
+                  }}>
+                    {hovered.rarity}
+                  </span>
+                  <span style={{ color: '#888', fontSize: '0.9rem', letterSpacing: '1px' }}>
+                    TYPE: <span style={{ color: '#fff' }}>{hovered.type}</span>
+                  </span>
                 </div>
                 
-                <p style={{ color: '#d1d8d5', fontSize: '1.2rem', lineHeight: '1.6', margin: 0 }}>
+                <p style={{ color: '#d1d8d5', fontSize: '1.1rem', lineHeight: '1.6', margin: 0 }}>
                   {hovered.desc}
                 </p>
-              </div>
-            ) : (
-              <div style={{ 
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'rgba(20, 20, 20, 0.4)',
-                border: '2px dashed rgba(255,255,255,0.1)',
-                borderRadius: '16px',
-                color: '#555',
-                fontSize: '1.2rem',
-                fontFamily: 'monospace',
-                minHeight: '250px'
-              }}>
-                [ AWAITING_INSPECTION ]
               </div>
             )}
           </div>
@@ -219,9 +242,13 @@ export default function Skills() {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes itemBob {
+          0%, 100% { transform: translateY(0) rotate(15deg) scale(1); }
+          50% { transform: translateY(-10px) rotate(20deg) scale(1.05); }
+        }
         @media (min-width: 900px) {
           .skills-layout {
-            grid-template-columns: 1fr 450px !important;
+            grid-template-columns: 1fr 400px !important;
           }
         }
       `}} />

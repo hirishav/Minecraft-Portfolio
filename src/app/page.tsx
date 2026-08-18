@@ -21,23 +21,27 @@ export default function Home() {
                 padding: 0.5rem 1rem;
                 font-size: 0.85rem;
                 border-radius: 8px;
-                background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                color: #888;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                background: color-mix(in srgb, var(--tag-color) 10%, transparent);
+                border: 1px solid color-mix(in srgb, var(--tag-color) 30%, transparent);
+                color: var(--tag-color);
+                box-shadow: 0 0 10px color-mix(in srgb, var(--tag-color) 20%, transparent);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 cursor: pointer;
                 text-transform: uppercase;
                 letter-spacing: 1px;
-                font-weight: 600;
+                font-weight: bold;
                 backdrop-filter: blur(4px);
+                animation: rgbWave 4s linear infinite;
               }
               .role-tag-modern:hover {
-                transform: translateY(-3px);
-                color: var(--tag-color);
-                background-color: color-mix(in srgb, var(--tag-color) 10%, transparent);
-                border-color: color-mix(in srgb, var(--tag-color) 50%, transparent);
-                box-shadow: 0 4px 15px color-mix(in srgb, var(--tag-color) 25%, transparent);
+                transform: translateY(-3px) scale(1.05);
+                border-color: color-mix(in srgb, var(--tag-color) 80%, transparent);
+                box-shadow: 0 0 20px color-mix(in srgb, var(--tag-color) 50%, transparent);
                 z-index: 10;
+              }
+              @keyframes rgbWave {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
               }
               .title-3d {
                 color: #fff;

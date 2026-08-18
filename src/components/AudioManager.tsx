@@ -94,6 +94,28 @@ export default function AudioManager() {
     osc.stop(ctx.currentTime + 0.3);
   };
 
+  const playHover = () => {
+    if (!audioCtxRef.current || isMutedRef.current) return;
+    const ctx = audioCtxRef.current;
+    
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(800, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.05);
+    
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+    
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.05);
+  };
+
   useEffect(() => {
     const initAudio = () => {
       if (!audioCtxRef.current) {
@@ -129,10 +151,29 @@ export default function AudioManager() {
       }
     };
 
+    let lastHoveredElement: Element | null = null;
+    const handleGlobalHover = (e: MouseEvent) => {
+      if (!audioCtxRef.current || audioCtxRef.current.state === 'suspended' || isMutedRef.current) return;
+
+      const target = e.target as HTMLElement;
+      if (target.closest('#mute-btn')) return;
+
+      const isInteractive = target.closest('button') || target.closest('a') || target.closest('.role-tag') || target.closest('.mc-button-action') || target.closest('.social-icon') || target.closest('.hover-target');
+      
+      if (isInteractive && isInteractive !== lastHoveredElement) {
+        lastHoveredElement = isInteractive;
+        playHover();
+      } else if (!isInteractive) {
+        lastHoveredElement = null;
+      }
+    };
+
     document.addEventListener('click', handleGlobalClick);
+    document.addEventListener('mouseover', handleGlobalHover);
 
     return () => {
       document.removeEventListener('click', handleGlobalClick);
+      document.removeEventListener('mouseover', handleGlobalHover);
       if (heartbeatIntervalRef.current) {
         clearInterval(heartbeatIntervalRef.current);
       }

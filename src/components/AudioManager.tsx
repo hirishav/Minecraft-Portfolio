@@ -150,7 +150,7 @@ export default function AudioManager() {
       const target = e.target as HTMLElement;
       if (target.closest('#mute-btn')) return;
 
-      const isInteractive = target.closest('button') || target.closest('a') || target.closest('.role-tag') || target.closest('.mc-button-action') || target.closest('.social-icon') || target.closest('.hover-target');
+      const isInteractive = target.closest('button') || target.closest('a') || target.closest('.role-tag') || target.closest('.role-tag-modern') || target.closest('.mc-button-action') || target.closest('.social-icon') || target.closest('.hover-target');
       
       if (isInteractive && isInteractive !== lastHoveredElement) {
         lastHoveredElement = isInteractive;

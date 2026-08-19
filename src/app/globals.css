@@ -311,32 +311,7 @@ button {
   }
 }
 
-/* HotbarNav positioning */
-.hotbar-nav {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  display: flex;
-  gap: 4px;
-  padding: 8px;
-  background: rgba(0,0,0,0.7);
-  border-radius: 4px;
-  border: 2px solid #222;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  backdrop-filter: blur(4px);
-  width: max-content;
-}
-@media (min-width: 1024px) {
-  .hotbar-nav {
-    top: 2rem;
-    right: 3rem;
-    bottom: auto;
-    left: auto;
-    transform: none;
-  }
-}
+/* Removed old .hotbar-nav to use CSS modules instead */
 
 /* Utilities */
 .hide-on-mobile {

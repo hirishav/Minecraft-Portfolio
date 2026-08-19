@@ -1,0 +1,176 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: rgba(20, 20, 20, 0.85);
+  border: 4px solid #111;
+  border-radius: 8px;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 0 2px #666;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardDiscord:hover {
+  border-color: #5865F2; /* Discord Blurple */
+  box-shadow: 0 20px 40px rgba(88, 101, 242, 0.2), inset 0 0 0 2px #5865F2;
+}
+
+.cardTicket:hover {
+  border-color: #FFAA00; /* Minecraft Gold */
+  box-shadow: 0 20px 40px rgba(255, 170, 0, 0.15), inset 0 0 0 2px #FFAA00;
+}
+
+.iconWrapper {
+  width: 88px;
+  height: 88px;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  border: 3px solid #222;
+  border-radius: 16px;
+  box-shadow: inset 0 4px 12px rgba(0,0,0,0.9), 0 4px 8px rgba(0,0,0,0.5);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.1) rotate(5deg);
+  border-color: #444;
+}
+
+.cardDiscord:hover .iconWrapper {
+  box-shadow: inset 0 4px 15px rgba(88, 101, 242, 0.4), 0 0 20px rgba(88, 101, 242, 0.5);
+  border-color: #5865F2;
+}
+
+.cardTicket:hover .iconWrapper {
+  box-shadow: inset 0 4px 15px rgba(255, 170, 0, 0.4), 0 0 20px rgba(255, 170, 0, 0.5);
+  border-color: #FFAA00;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.7));
+  animation: floatIcon 3.5s ease-in-out infinite;
+  image-rendering: pixelated;
+}
+
+@keyframes floatIcon {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.cardTitle {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-pixel);
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.8);
+  transition: color 0.3s ease;
+  color: var(--foreground);
+}
+
+.cardDiscord:hover .cardTitle {
+  color: #5865F2;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.8), 0 0 15px rgba(88, 101, 242, 0.6);
+}
+
+.cardTicket:hover .cardTitle {
+  color: #FFAA00;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.8), 0 0 15px rgba(255, 170, 0, 0.6);
+}
+
+.cardText {
+  color: #a0aab2;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  font-size: 1.15rem;
+  flex-grow: 1;
+}
+
+.usernameBox {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  padding: 1.2rem;
+  background: #0a0a0a;
+  border: 3px solid #222;
+  border-radius: 6px;
+  color: #55FF55; /* Minecraft green */
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.9);
+  margin-bottom: 2.5rem;
+  width: 100%;
+  box-shadow: inset 0 4px 15px rgba(0,0,0,0.9);
+  letter-spacing: 1px;
+}
+
+.quoteBox {
+  background: rgba(0,0,0,0.4);
+  border-left: 4px solid #FFAA00;
+  padding: 1.2rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.quoteText {
+  font-style: italic;
+  color: #ccc;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.socialIcon {
+  font-size: 2.8rem;
+  color: #a0aab2;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(20,20,20,0.6);
+  border: 2px solid #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 2px 0px rgba(255,255,255,0.05);
+}
+
+.socialIcon:hover {
+  transform: translateY(-8px) scale(1.1);
+  background: rgba(30,30,30,0.9);
+  border-color: #555;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7), inset 0 2px 0px rgba(255,255,255,0.1);
+}

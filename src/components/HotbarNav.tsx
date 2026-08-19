@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { FiHome, FiUser, FiCode, FiBriefcase, FiStar, FiTool, FiMail } from 'react-icons/fi';
 import styles from './HotbarNav.module.css';
 
 const navItems = [
-  { name: 'Home', path: '/#home', hash: '#home', icon: FiHome },
-  { name: 'About', path: '/#about', hash: '#about', icon: FiUser },
-  { name: 'Skills', path: '/#skills', hash: '#skills', icon: FiCode },
-  { name: 'Experience', path: '/#experience', hash: '#experience', icon: FiBriefcase },
-  { name: 'Projects', path: '/#work', hash: '#work', icon: FiStar },
-  { name: 'Services', path: '/#services', hash: '#services', icon: FiTool },
-  { name: 'Contact', path: '/#contact', hash: '#contact', icon: FiMail },
+  { name: 'Home', path: '/#home', hash: '#home', icon: '/minecraft/block/grass_block_side.png' },
+  { name: 'About', path: '/#about', hash: '#about', icon: '/minecraft/item/book.png' },
+  { name: 'Skills', path: '/#skills', hash: '#skills', icon: '/minecraft/item/diamond_sword.png' },
+  { name: 'Experience', path: '/#experience', hash: '#experience', icon: '/minecraft/item/filled_map.png' },
+  { name: 'Projects', path: '/#work', hash: '#work', icon: '/minecraft/item/nether_star.png' },
+  { name: 'Services', path: '/#services', hash: '#services', icon: '/minecraft/item/music_disc_13.png' },
+  { name: 'Contact', path: '/#contact', hash: '#contact', icon: '/minecraft/item/paper.png' },
 ];
 
 export default function HotbarNav() {
@@ -58,18 +58,24 @@ export default function HotbarNav() {
           isActive = item.name === 'Projects';
         }
 
-        const IconComponent = item.icon;
-
         return (
           <a 
             href={item.path} 
             key={i} 
-            className={`${styles.hotbarItem} ${isActive ? styles.active : ''}`}
+            className={`${styles.hotbarSlot} ${isActive ? styles.active : ''}`}
             onClick={() => setActiveHash(item.hash)} 
             aria-label={item.name}
           >
             <span className={styles.tooltip}>{item.name}</span>
-            <IconComponent size={22} />
+            <div className={styles.iconWrapper}>
+              <Image 
+                src={item.icon} 
+                alt={item.name} 
+                width={32}
+                height={32}
+                className={styles.icon}
+              />
+            </div>
           </a>
         );
       })}
